@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/big_window_layout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:id="@+id/small_window_layout"
+		android:layout_width="240dp"
+		android:layout_height="228dp"
+		android:orientation="vertical">
+
+		<RelativeLayout
+			android:id="@+id/xyf_content_top"
+			android:layout_width="match_parent"
+			android:layout_height="70dp"
+			android:background="#00000000">
+
+			<LinearLayout
+				android:id="@+id/xyf_content_top_rl"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:paddingLeft="@dimen/xyf_padding_left"
+				android:paddingRight="@dimen/xyf_padding_right"
+				android:background="@drawable/xyf_content_top_bg"
+				android:layout_alignParentBottom="true">
+
+				<LinearLayout
+					android:id="@+id/xyf_top_left"
+					android:layout_width="0dp"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:orientation="vertical"
+					android:gravity="center">
+
+					<ImageView
+						android:layout_width="15dp"
+						android:layout_height="15dp"
+						android:background="@drawable/xyf_manager"/>
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="5dp"
+						android:textColor="#ffffff"
+						android:textSize="8sp"
+						android:text="应用管理"/>
+
+				</LinearLayout>
+				<View
+					android:layout_width="0dp"
+					android:layout_height="match_parent"
+					android:layout_weight="1"/>
+
+				<LinearLayout
+					android:id="@+id/xyf_top_right"
+					android:layout_width="0dp"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:orientation="vertical"
+					android:gravity="center">
+
+					<ImageView
+						android:layout_width="15dp"
+						android:layout_height="15dp"
+						android:background="@drawable/xyf_market"/>
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="5dp"
+						android:textColor="#ffffff"
+						android:textSize="8sp"
+						android:text="前往市场"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/ll_progressbar"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_centerHorizontal="true"
+				android:padding="6dp"
+				android:background="@drawable/xyf_progress_bg_shadow"
+				android:visibility="gone">
+
+				<com.andy.xyfloatingball.floating.RoundProgressBar
+					android:id="@+id/roundProgress"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					app:roundColor="#00000000"
+					app:roundProgressColor="#ffffff"
+					app:roundWidth="2dp"
+					app:textColor="#ffffff"
+					app:maxText="true"
+					app:textSize="18sp"/>
+
+			</LinearLayout>
+
+			<RelativeLayout
+				android:id="@+id/acc_ball_rl"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:layout_centerInParent="true"
+				android:background="@drawable/xyf_progress_bg_shadow"
+				android:padding="5dp">
+
+				<ImageView
+					android:id="@+id/image_rocket"
+					android:layout_width="20dp"
+					android:layout_height="41dp"
+					android:layout_centerInParent="true"
+					android:scaleType="fitXY"
+					android:src="@drawable/rocket_line"
+					android:visibility="gone"/>
+
+				<View
+					android:id="@+id/test_inner"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:background="@drawable/xy_flow_bg_in"
+					android:orientation="vertical"/>
+
+				<LinearLayout
+					android:id="@+id/acc_complete"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:orientation="vertical"
+					android:gravity="center"
+					android:visibility="gone">
+					<ImageView
+						android:layout_width="25dp"
+						android:layout_height="15dp"
+						android:src="@drawable/complete"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="5dp"
+						android:textSize="8sp"
+						android:textColor="@color/white"
+						android:text="加速完成"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/release_mb"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:orientation="vertical"
+					android:gravity="center"
+					android:visibility="gone">
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="horizontal"
+						android:gravity="center">
+						<TextView
+							android:id="@+id/release_number"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:includeFontPadding="false"
+							android:lineSpacingExtra="0dp"
+							android:textColor="@color/white"
+							android:textSize="16sp"/>
+
+						<TextView
+							android:id="@+id/release_unit"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginLeft="2dp"
+							android:layout_marginTop="2dp"
+							android:layout_gravity="bottom"
+							android:textColor="@color/white"
+							android:textSize="8sp"
+							android:text="MB"/>
+
+					</LinearLayout>
+					<TextView
+						android:id="@+id/release_content"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="2dp"
+						android:textColor="@color/white"
+						android:textSize="6sp"
+						android:text="内存释放"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/text_percent"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:orientation="vertical"
+					android:gravity="center"
+					android:visibility="visible">
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="horizontal"
+						android:gravity="center">
+						<TextView
+							android:id="@+id/used_number"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:includeFontPadding="false"
+							android:lineSpacingExtra="0dp"
+							android:textColor="@color/white"
+							android:textSize="16sp"
+							android:text="60"/>
+						<TextView
+							android:id="@+id/unit"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:textColor="@color/white"
+							android:layout_marginLeft="2dp"
+							android:layout_marginTop="2dp"
+							android:layout_gravity="bottom"
+							android:textSize="10sp"
+							android:text="%"/>
+
+					</LinearLayout>
+					<TextView
+						android:id="@+id/content"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="2dp"
+						android:textColor="@color/white"
+						android:textSize="6sp"
+						android:text="点我加速"/>
+
+				</LinearLayout>
+
+			</RelativeLayout>
+
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/xyf_content_bg">
+
+			<RelativeLayout
+				android:id="@+id/xyf_weather_rl"
+				android:layout_width="match_parent"
+				android:layout_height="30dp"
+				android:background="@drawable/xyf_content_bottom_bg"
+				android:layout_alignParentBottom="true"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp">
+
+				<TextView
+					android:id="@+id/xyf_location"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:text="郑州市"/>
+				<LinearLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerInParent="true"
+					android:orientation="horizontal"
+					android:gravity="center_vertical">
+					<ImageView
+						android:id="@+id/xyf_weather_pic"
+						android:layout_width="15dp"
+						android:layout_height="15dp"
+						android:src="@drawable/xyf_weather_shine"/>
+					<TextView
+						android:id="@+id/xyf_temp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="2dp"
+						android:text="晴8~15℃"/>
+
+				</LinearLayout>
+
+				<TextView
+					android:id="@+id/xyf_air"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/xyf_air_bg"
+					android:layout_alignParentRight="true"
+					android:layout_centerVertical="true"
+					android:textColor="@color/white"
+					android:text="82 良"/>
+
+			</RelativeLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="#ffffff"
+				android:layout_above="@+id/xyf_weather_rl"
+				android:layout_marginBottom="5dp"
+				android:orientation="vertical"
+				android:paddingLeft="15dp"
+				android:paddingRight="15dp"
+				android:paddingTop="15dp">
+
+				<RelativeLayout
+					android:id="@+id/xyf_hot_apps"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="10dp"
+					android:paddingLeft="5dp"
+					android:paddingRight="5dp">
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_centerVertical="true"
+						android:textColor="#999999"
+						android:textSize="9sp"
+						android:text="热门应用"/>
+
+					<TextView
+						android:id="@+id/xyf_hot_apps_change"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_centerVertical="true"
+						android:layout_alignParentRight="true"
+						android:textSize="9sp"
+						android:textColor="@color/xyf_font_color_gray"
+						android:text="换一批"/>
+
+					<ImageView
+						android:id="@+id/xyf_hot_apps_icon"
+						android:layout_width="10dp"
+						android:layout_height="10dp"
+						android:layout_toLeftOf="@id/xyf_hot_apps_change"
+						android:layout_marginRight="5dp"
+						android:layout_centerVertical="true"
+						android:src="@drawable/xyf_change"/>
+
+				</RelativeLayout>
+
+				<View android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:background="#e5e5e5"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"/>
+
+				<android.support.v7.widget.RecyclerView
+					android:id="@+id/recycle"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"
+					android:layout_marginTop="10dp"
+					android:scrollbars="none" />
+
+				<TextView
+					android:id="@+id/recom_end"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:gravity="center"
+					android:textColor="#999999"
+					android:textSize="13sp"
+					android:text="~推荐已结束~"
+					android:visibility="gone"/>
+
+			</LinearLayout>
+
+		</RelativeLayout>
+	</LinearLayout>
+
+</RelativeLayout>

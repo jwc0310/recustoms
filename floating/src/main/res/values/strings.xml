@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">逍遥悬浮球</string>
+    <string name="btn">启动悬浮窗口</string>
+    <string name="floating">悬浮窗口</string>
+    <string name="stop">移除悬浮窗口</string>
+
+    <string name="button_style_1_text">Indeterminate + Center fill</string>
+    <string name="button_style_2_text">Coloured fill</string>
+    <string name="button_style_3_text">Sling empty</string>
+    <string name="button_style_4_text">Pulse</string>
+
+    <string name="xyf_hide_once">本次隐藏</string>
+    <string name="xyf_top_always">始终置顶</string>
+</resources>

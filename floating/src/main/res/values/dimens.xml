@@ -1,0 +1,25 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="drawable_ring_size">4dip</dimen>
+
+    <!--<dimen name="xyf_bg_select_size">45dp</dimen>-->
+    <dimen name="xyf_rb_size">48dp</dimen>
+    <dimen name="xyf_left_right_size">8dp</dimen>
+
+    <dimen name="xy_game_icon_width">62dp</dimen>
+    <dimen name="xy_game_icon_height">62dp</dimen>
+    <dimen name="xy_btn_download_width">65dp</dimen>
+    <dimen name="xy_btn_download_height">30dp</dimen>
+    <dimen name="textsize14">14sp</dimen>
+    <dimen name="textsize12">12sp</dimen>
+
+    <dimen name="xyf_padding_left">15dp</dimen>
+    <dimen name="xyf_padding_right">15dp</dimen>
+    <dimen name="xyf_icon_size">30dp</dimen>
+    <dimen name="xyf_icon_size_2">60dp</dimen>
+
+    <dimen name="content_radius">3dp</dimen>
+
+</resources>

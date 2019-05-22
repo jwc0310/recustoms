@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/game_effect_0" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_1" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_2" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_3" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_4" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_5" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_6" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_7" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_8" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_9" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_10" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_11" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_12" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_13" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_14" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_15" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_16" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_17" android:duration="15"></item>
+    <item android:drawable="@drawable/game_effect_18" android:duration="15"></item>
+</animation-list>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0dc5a0</color>
+    <color name="colorPrimaryDark">#0A9D80</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="xyf_bg_color_black">#99000000</color>
+    <color name="xyf_progress_bg_black">#000000</color>
+    <color name="xyf_progress_bg_blue">#83AFEA</color>
+    <color name="xyf_progress_bg_green">#45E3C7</color>
+    <color name="xyf_progress_bg_light">#5AEDE1</color>
+    <color name="xyf_progress_bg_yellow">#EFE27D</color>
+    <color name="xyf_progress_bg_brown">#F59A89</color>
+    <color name="xyf_theme_bg_black">#CC000000</color>
+    <color name="xyf_theme_bg_blue">#CC83AFEA</color>
+    <color name="xyf_theme_bg_green">#CC45E3C7</color>
+    <color name="xyf_theme_bg_light">#CC5AEDE1</color>
+    <color name="xyf_theme_bg_yellow">#CCEFE27D</color>
+    <color name="xyf_theme_bg_brown">#CCF59A89</color>
+
+    <color name="xyf_font_color_white">#000000</color>
+    <color name="xyf_font_color_gray">#999999</color>
+
+    <color name="xyf_btn_color_white">#ffffff</color>
+    <color name="xyf_btn_color_gray">#dbe8e8</color>
+    <color name="white">#ffffff</color>
+
+    <color name="text_hover">#00ffcc</color>
+    <color name="text_hover_2">#666666</color>
+
+
+</resources>
