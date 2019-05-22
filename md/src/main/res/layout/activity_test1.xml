@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:my="http://schemas.android.com/apk/res-auto"
+    android:background="#000000">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/test1_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:src="@mipmap/ic_launcher"/>
+
+    <com.andy.materialtest.Swing
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"/>
+
+    <com.andy.materialtest.MultiDirectionSlidingDrawer
+        android:id="@+id/drawer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        my:content="@+id/content"
+        my:direction="topToBottom"
+        my:handle="@+id/gl_view" >
+
+        <include
+            android:id="@+id/content"
+            layout="@layout/pen_content" />
+
+        <android.opengl.GLSurfaceView
+            android:id="@+id/gl_view"
+            android:layout_width="60dp"
+            android:layout_height="80dp" />
+
+    </com.andy.materialtest.MultiDirectionSlidingDrawer>
+
+
+</android.support.design.widget.CoordinatorLayout>

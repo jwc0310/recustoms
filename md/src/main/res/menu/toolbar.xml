@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/backup"
+        android:title="Backup"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/delete"
+        android:title="Delete"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/setting"
+        android:title="Setting"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="never" />
+    <item android:id="@+id/test_1"
+        android:title="test_1"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="never"/>
+    <item android:id="@+id/test_2"
+        android:title="test_2"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="never"/>
+    <item android:id="@+id/test_3"
+        android:title="test_3"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="never"/>
+    <item android:id="@+id/test_4"
+        android:title="test_4"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="never"/>
+    <item android:id="@+id/test_5"
+        android:title="test_5"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="never"/>
+</menu>
