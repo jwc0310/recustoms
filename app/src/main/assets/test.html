@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+
+        function sum(a,b){
+            return a+b;
+        }
+
+        function s(){
+            var result =window.android.back();
+            document.getElementById("p").innerHTML=result;
+        }
+
+    </script>
+</head>
+<body>
+<button onclick="s()">调用本地方法</button>
+<a href="http://wxpay.wxutil.com/mch/pay/h5.v2.php">点击</a>
+<p id="p"></p>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout"
+    android:background="#ffffff"
+    android:clickable="false">
+
+    <ImageView
+        android:id="@+id/iv_frame"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:padding="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/frame"/>
+
+    <com.andy.recustomviews.views.TestButton
+        android:id="@+id/button"
+        android:layout_width="160dp"
+        android:layout_height="70dp"
+        android:text="button"
+        android:layout_centerInParent="true"/>
+
+    <com.andy.xyfloatingball.floating.MySurfaceView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00ffffff"
+        android:id="@+id/waterWaveView"
+        android:clickable="false"
+        android:visibility="gone"/>
+
+</RelativeLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="设置壁纸"/>
+
+    <Button
+        android:id="@+id/set_wrapper1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置1"/>
+    <Button
+        android:id="@+id/set_wrapper2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="分辨率"/>
+    <Button
+        android:id="@+id/set_wrapper3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置3"/>
+    <Button
+        android:id="@+id/set_wrapper4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置4"/>
+
+    <Button
+        android:id="@+id/next_wrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="清除"/>
+
+</LinearLayout>

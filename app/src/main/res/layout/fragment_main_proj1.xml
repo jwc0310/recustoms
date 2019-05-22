@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button_0"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:text="jni测试"/>
+    <Button
+        android:id="@+id/button_1"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:text="点击我1"/>
+    <Button
+        android:id="@+id/button_2"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:text="点击我2"/>
+
+
+</LinearLayout>

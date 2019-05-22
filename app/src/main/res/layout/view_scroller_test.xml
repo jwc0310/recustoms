@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.andy.recustomviews.views.LauncherViewGroup
+        android:id="@+id/llsc"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="center">
+
+        <View
+            android:id="@+id/scroller_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/recustomviews_01"/>
+
+    </com.andy.recustomviews.views.LauncherViewGroup>
+
+    <Button
+        android:id="@+id/scroller_fling"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:text="@string/scroll_fling"
+        android:layout_marginTop="10dp"/>
+
+
+    <Button
+        android:id="@+id/scroller_to"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:text="@string/scroll_to"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/scroller_by"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:text="@string/scroll_by"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/scroller_reset"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:text="@string/scroll_reset"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>
