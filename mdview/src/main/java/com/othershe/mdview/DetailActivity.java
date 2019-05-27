@@ -66,7 +66,6 @@ public class DetailActivity extends AppCompatActivity {
         //设置image背景
         mDetailImg.setBackgroundResource(R.mipmap.bg);
 
-        mWebView.loadUrl("http://www.jianshu.com/");
         mWebView.setWebChromeClient(new WebChromeClient() {
 
             @Override
@@ -80,6 +79,7 @@ public class DetailActivity extends AppCompatActivity {
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mWebView.loadUrl("http://www.jianshu.com/");
                 Snackbar.make(mCoordinatorLayout, "点我分享哦！", Snackbar.LENGTH_SHORT).show();
             }
         });

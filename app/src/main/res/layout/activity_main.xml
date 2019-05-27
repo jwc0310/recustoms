@@ -52,6 +52,12 @@
             android:layout_height="45dp"
             android:text="发送广播"/>
 
+        <Button
+            android:id="@+id/wifi_rel"
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:text="桥接"/>
+
         <com.andy.recustomviews.views.MyGLView
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

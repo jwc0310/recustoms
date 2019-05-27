@@ -6,6 +6,9 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.net.Uri;
+import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -175,6 +178,25 @@ public class MainActivity extends BaseActivity {
                 sendBroadcast(intent);
             }
         });
+
+        findViewById(R.id.wifi_rel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showWifiInfo();
+            }
+        });
+    }
+
+    private void showWifiInfo() {
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        WifiInfo connectionInfo = wifiManager.getConnectionInfo();
+        Log.e("Andy wifi", connectionInfo.toString());
+        Log.e("Andy wifi", "network id = " + connectionInfo.getNetworkId());
+        List<WifiConfiguration> configuredNetworks = wifiManager.getConfiguredNetworks();
+        Log.e("Andy wifi", "size = " + configuredNetworks.size());
+        for (WifiConfiguration conf : configuredNetworks) {
+            Log.e("Andy wifi","\n conf = " + conf.toString() +", [network id] = " + conf.networkId);
+        }
     }
 
     private class AdapterViewHolder extends RecyclerView.ViewHolder{

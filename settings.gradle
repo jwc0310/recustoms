@@ -1,1 +1,1 @@
-include ':app', ':floating', ':filechoose', ':autolayout', ':sample', ':androidutils', ':canvasglsample', ':canvasgl', ':glidetest', ':mdview', ':md', ':mylibrary', ':contentprovider', ':designpatterns'
+include ':app', ':floating', ':filechoose', ':autolayout', ':sample', ':androidutils', ':canvasglsample', ':canvasgl', ':glidetest', ':mdview', ':md', ':mylibrary', ':contentprovider', ':designpatterns', ':networkframeworks', ':retrofit2', ':okhttp3'
