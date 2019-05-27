@@ -32,4 +32,5 @@ app/app.iml
 *.apk
 /build
 /captures
+build/
 
