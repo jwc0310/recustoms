@@ -20,7 +20,6 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Array;
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.GenericDeclaration;
-import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
@@ -36,29 +35,6 @@ final class Utils {
 
   private Utils() {
     // No instances.
-  }
-
-  static RuntimeException methodError(Method method, String message, Object... args) {
-    return methodError(method, null, message, args);
-  }
-
-  static RuntimeException methodError(Method method, @Nullable Throwable cause, String message,
-      Object... args) {
-    message = String.format(message, args);
-    return new IllegalArgumentException(message
-        + "\n    for method "
-        + method.getDeclaringClass().getSimpleName()
-        + "."
-        + method.getName(), cause);
-  }
-
-  static RuntimeException parameterError(Method method,
-      Throwable cause, int p, String message, Object... args) {
-    return methodError(method, cause, message + " (parameter #" + (p + 1) + ")", args);
-  }
-
-  static RuntimeException parameterError(Method method, int p, String message, Object... args) {
-    return methodError(method, message + " (parameter #" + (p + 1) + ")", args);
   }
 
   static Class<?> getRawType(Type type) {
@@ -106,9 +82,7 @@ final class Utils {
       if (!(b instanceof ParameterizedType)) return false;
       ParameterizedType pa = (ParameterizedType) a;
       ParameterizedType pb = (ParameterizedType) b;
-      Object ownerA = pa.getOwnerType();
-      Object ownerB = pb.getOwnerType();
-      return (ownerA == ownerB || (ownerA != null && ownerA.equals(ownerB)))
+      return equal(pa.getOwnerType(), pb.getOwnerType())
           && pa.getRawType().equals(pb.getRawType())
           && Arrays.equals(pa.getActualTypeArguments(), pb.getActualTypeArguments());
 
@@ -179,6 +153,14 @@ final class Utils {
       if (toFind.equals(array[i])) return i;
     }
     throw new NoSuchElementException();
+  }
+
+  private static boolean equal(Object a, Object b) {
+    return a == b || (a != null && a.equals(b));
+  }
+
+  static int hashCodeOrZero(Object o) {
+    return o != null ? o.hashCode() : 0;
   }
 
   static String typeToString(Type type) {
@@ -348,7 +330,7 @@ final class Utils {
     return paramType;
   }
 
-  static boolean hasUnresolvableType(@Nullable Type type) {
+  static boolean hasUnresolvableType(Type type) {
     if (type instanceof Class<?>) {
       return false;
     }
@@ -388,7 +370,7 @@ final class Utils {
     private final Type rawType;
     private final Type[] typeArguments;
 
-    ParameterizedTypeImpl(@Nullable Type ownerType, Type rawType, Type... typeArguments) {
+    ParameterizedTypeImpl(Type ownerType, Type rawType, Type... typeArguments) {
       // Require an owner type if the raw type needs it.
       if (rawType instanceof Class<?>
           && (ownerType == null) != (((Class<?>) rawType).getEnclosingClass() == null)) {
@@ -422,9 +404,7 @@ final class Utils {
     }
 
     @Override public int hashCode() {
-      return Arrays.hashCode(typeArguments)
-          ^ rawType.hashCode()
-          ^ (ownerType != null ? ownerType.hashCode() : 0);
+      return Arrays.hashCode(typeArguments) ^ rawType.hashCode() ^ hashCodeOrZero(ownerType);
     }
 
     @Override public String toString() {
@@ -512,18 +492,6 @@ final class Utils {
       if (lowerBound != null) return "? super " + typeToString(lowerBound);
       if (upperBound == Object.class) return "?";
       return "? extends " + typeToString(upperBound);
-    }
-  }
-
-  // https://github.com/ReactiveX/RxJava/blob/6a44e5d0543a48f1c378dc833a155f3f71333bc2/
-  // src/main/java/io/reactivex/exceptions/Exceptions.java#L66
-  static void throwIfFatal(Throwable t) {
-    if (t instanceof VirtualMachineError) {
-      throw (VirtualMachineError) t;
-    } else if (t instanceof ThreadDeath) {
-      throw (ThreadDeath) t;
-    } else if (t instanceof LinkageError) {
-      throw (LinkageError) t;
     }
   }
 }

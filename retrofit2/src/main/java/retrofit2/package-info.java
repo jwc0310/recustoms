@@ -9,5 +9,7 @@
  * }
  * </pre>
  */
-@retrofit2.internal.EverythingIsNonNull
+@ParametersAreNonnullByDefault
 package retrofit2;
+
+import javax.annotation.ParametersAreNonnullByDefault;
