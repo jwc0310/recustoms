@@ -1,0 +1,102 @@
+内存方面优化
+
+1，内存溢出(out of memory) ：是指程序在申请内存时，没有足够的内存空间供其使用，
+           出现out of memory(OOM)那就是内存溢出。内存溢出也就是内存不够用。
+
+   内存溢出原因：
+        (1).Android系统为每个应用程序申请到的内存有限,一般为16M或者24M 也有98M 221M等,
+          我们可以在清单文件中进行配置,android:largeheap = "true" 从而给APP申请更大的内存空间;
+
+        (2).当应用程序产生的内存泄漏较多时,就会使程序所需要的内存超出系统分配的内存空间,导致内存溢出;
+
+
+2，内存泄漏(memory leak)
+    是指程序在申请内存后,无法释放已申请的内存;
+    即本该被程序收回的对象不能被收回,继续停留在堆内存中;
+
+   *** 内存泄漏原因: 持有引用者的生命周期 > 被引用者的生命周期 ***
+
+
+   1.资源对象没有关闭引起的内存泄漏
+
+        如:广播BraodcastReceiver、EventBus、文件流File、数据库游标Cursor、图片资源Bitmap、动画等，
+            若在Activity销毁时没有调用相应的类似close（）、destroy（）、recycler（）、release（）
+            等方法释放则这些资源将不会被回收，从而造成内存泄漏
+
+         (1) 广播BraodcastReceiver 记得注销注册unregisterReceiver();
+
+         (2) 文件流File：记得关闭流InputStream / OutputStream.close();
+
+         (3) 数据库游标cursor：使用后关闭游标cursor.close（）;
+
+         (4) 对于图片资源Bitmap：当它不再被使用时，应调用recycle()回收此对象的像素所占用的内存,再赋为null
+            Bitmap.recycle()；
+            Bitmap = null;
+
+         (5) 动画：设置成无限循环播放repeatCount = “infinite”后,在Activity退出时记得停止动画
+
+   2.集合对象没有及时清理引起的内存溢出
+
+        我们通常会把对象存入集合中,当不使用时,记得清空集合,让相关对象不再被引用;
+
+        objectList.clear();
+        objectList=null;
+
+    3.Static 关键字修饰的成员变量 以及 单例模式
+      原因:static关键字修饰的成员变量(生命周期) = 应用程序(生命周期)
+
+        例如: 当Activity需销毁时，由于mContext的生命周期 = 应用程序的生命周期，则 Activity无法被回收，从而出现内存泄露
+
+        public class myactivity {
+            // 定义1个静态变量
+            private static Context mContext;
+            // 引用的是Activity的context
+            mContext = context;
+        }
+        解决方法:如果使用Context ,尽可能使用Applicaiton的Context;
+
+        单例模式就是静态成员变量,所以在创建单例时,传入的Context最好是Applicaiton的Context;
+
+        @Override
+           protected void onDestroy() {
+              // 外部类Activity生命周期结束时，强制结束线程
+              super.onDestroy();
+              Thread.stop();
+           }
+
+    4.非静态内部类
+        （1）非静态内部类创建静态实例引起的内存泄漏
+
+                因为 静态实例的生命周期 = 应用程序的生命周期,所以非静态内部类生命周期 = 应用程序的生命周期;
+                因非静态内部类默认持有外部类的引用而导致外部类无法释放,从而导致内存溢出;
+
+                解决方法:将非静态内部类设置为静态内部类(因为静态内部类默认不持有外部类引用)
+                        或者将该内部类抽取出来封装成一个单例;
+
+        （2）多线程： AsyncTask、实现Runnable接口、继承Thread类
+
+                多线程使用需要创建 非静态内部类 / 匿名内部类(运行时默认持有外部类引用)
+                原因: 线程正在处理任务, 此时外部类需销毁,(线程实例生命周期 > 外部类生命周期)
+                     此时线程实例内部类持有外部类引用,使得外部类不能够被垃圾回收器回收,造成内存泄漏;
+                解决方法:将多线程实例类设置为静态内部类; 或者 当外部类销毁时,强制结束线程;
+
+                    private static class MyThread extends Thread{
+                           @Override
+                           public void run() {
+                               try {
+                                   Thread.sleep(5000);
+                                   Log.d(TAG, "执行了多线程");
+                               } catch (InterruptedException e) {
+                                   e.printStackTrace();
+                               }
+                           }
+                       }
+                    @Override
+                       protected void onDestroy() {
+                          // 外部类Activity生命周期结束时，强制结束线程
+                          super.onDestroy();
+                          Thread.stop();
+                       }
+        （3）Handler
+            将Handler声明为静态内部类，就不会持有外部类的引用，其生命周期就和外部类无关，
+            如果Handler里面需要context的话，可以通过弱引用方式引用外部类
