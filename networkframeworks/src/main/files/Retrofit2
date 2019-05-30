@@ -1,0 +1,33 @@
+注解：
+    1、方法注解：@GET @POST、@PUT、@DELETE、@PATCH、@OPTIONS、@HTTP
+    2、标记注解：@FormUrlEncoded、@Multipart、@Streaming
+    3、参数注解：@Query 、@QueryMap、@Body、@Field、@FieldMap、@Part、@PartMap
+    4、其它注解：@Path、@Header、@Headers、@Url
+
+
+    @Streaming
+        下载大文件时需要加上，否则会OOM
+
+优点
+    请求的方法参数注解可以定制
+    支持同步、异步和RxJava
+    超级解耦
+    可以配置不同的反序列化工具来解析数据，如json、xml等
+
+HTTP规范
+    HTTP请求：状态行
+             请求头
+             消息体
+
+
+             <method> <request-URL> <version>
+             <headers>
+             <entity-body>
+
+(encode type)
+enctype 指定的 content-type
+    application/x-www-form-urlencoded
+    application/json
+    text/xml
+    multipart/form-data
+

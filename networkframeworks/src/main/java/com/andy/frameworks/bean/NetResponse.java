@@ -1,4 +1,13 @@
 package com.andy.frameworks.bean;
-
-public class NetResponse {
+/*
+{
+        data: {},
+        msg: "上传成功",
+        code: 200
+        }
+*/
+public class NetResponse<T> {
+    public int code;
+    public String msg;
+    public T data;
 }

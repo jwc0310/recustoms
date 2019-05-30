@@ -7,4 +7,10 @@
     android:layout_height="match_parent"
     tools:context="com.andy.frameworks.MainActivity">
 
+    <Button
+        android:id="@+id/request_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发起请求"/>
+
 </android.support.constraint.ConstraintLayout>
