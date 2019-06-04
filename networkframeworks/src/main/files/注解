@@ -1,0 +1,51 @@
+Annotation 注解
+
+    1,编译器指令
+    2,构建时指令
+    3,运行时指令
+
+    @ 告诉编译器 这是一个注解
+
+    @Doctor (name = "xxxx")
+    @Doctor (name = "xxxx", sex = "M")
+    @InsertNew("yes")
+
+使用场合
+    类，接口，方法，方法参数，属性，局部变量
+
+
+元注解：
+    负责注解其他注解
+    @Target
+        CONSTRUCTOR:构造器的声明
+        FIELD:域声明(包括enum实例)
+        LOCAL_VARIABLE:布局变量声明
+        METHOD:方法声明
+        PACKAGE：包声明
+        PARAMETER：参数声明
+        TYPE：类、接口（包括注解类型）或enum声明
+        ANNOTATION_TYPE：注解声明（应用于另一个注解上）
+        TYPE_PARAMETER：类型参数声明（1.8新加入）
+        TYPE_USE：类型使用声明（1.8新加入）
+
+    @Retention
+        表示需要在什么级别保存该注解信息，由RetentionPolicy枚举定义
+        SOURCE
+        CLASS
+        RUNTIME
+
+    @Documented
+        注解会被包含在javaapi文档中
+
+    @Inherited
+        允许子类继承父类的注解
+
+
+自定义注解
+    格式: public @Interface 注解名{定义体}
+
+
+运行时注解编译器
+    通过反射后去注解信息，进行操作
+编译时注解处理器
+

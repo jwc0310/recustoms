@@ -4,12 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import com.andy.frameworks.bean.GitRepo;
 import com.andy.frameworks.network.ApiManager;
-import com.andy.frameworks.network.ApiService;
 
-import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;

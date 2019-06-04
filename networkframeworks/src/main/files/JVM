@@ -1,0 +1,39 @@
+JVM
+
+JVM 类加载机制
+    虚拟机把描述类的数据从class文件加载到内存，并对数据进行校验、转换解析和初始化，
+    最终形成可以被虚拟机直接使用的Java类型。
+
+    过程：
+    加载-->链接(-->验证-->准备-->解析)-->初始化-->使用-->卸载
+
+    class字节码->类加载类->内存(Class对象，方法区中运行的数据) -> 外部可以通过Class对象，操作类
+
+    链接：
+        将Java的二进制代码合并到JVM的运行状态中的过程
+
+        验证：确保加载的类信息符合JVM规范，没有安全方面的问题。
+        准备：正式为类变量(static变量)分配内存并设置变量初始值的阶段，这些内存都将在方法区中进行分配
+        解析：虚拟机常量池内的符合引用替换为直接引用的过程。
+        常用池：虚拟常用池内的符合引用替换为直接引用的过程
+
+
+    初始化：
+        执行类构造器的Class的<clinit>()方法的过程
+
+    使用：
+    卸载：
+
+
+    类加载机制过程.webp
+
+获取Class对象的方法
+    1，Object类的getClass()方法
+        Class c1 = new String("hello jvm").getClass();
+    2, 通过Class类的静态方法---forName()来实现
+        Class c2 = Class.forName("com.andy.xxxx.xxx");
+    3, 如果T是一个已定义的类型，java中，它的.class文件名：T.class
+        就该表了与其匹配的Class对象
+           Class c3 = Manager.class;
+           Class c4 = int.class;
+           Class c5 = Double[].class;

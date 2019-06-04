@@ -19,7 +19,6 @@ HTTP规范
              请求头
              消息体
 
-
              <method> <request-URL> <version>
              <headers>
              <entity-body>
