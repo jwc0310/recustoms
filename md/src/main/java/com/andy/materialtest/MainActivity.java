@@ -1,12 +1,15 @@
 package com.andy.materialtest;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -21,9 +24,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.andy.materialtest.header.Test5Activity;
+import com.andy.materialtest.utils.PhoneInfo;
+import com.andy.materialtest.utils.PropertyUtil;
 
 import java.io.File;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -47,23 +51,7 @@ public class MainActivity extends BaseActivity {
     private SwipeRefreshLayout swipeRefresh;
 
 
-    private String getProperty(String key, String defValue) {
-        String value = "";
-//        String defaultvalue = "123";
-//        String key = "andy.gles";
-        try {
-            Class<?> c = Class.forName("android.os.SystemProperties");
-            Method get = c.getMethod("get", String.class, String.class);
-            value = (String) (get.invoke(c, key, defValue));
-            Log.e("Andy", " == "+value);
-            if (!value.matches("([A-Z]|[a-z]|[0-9]|[:]|[-]){0,}")) {
-                value = defValue;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return value;
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +89,8 @@ public class MainActivity extends BaseActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fb_button_event();
+                //fb_button_event();
+                sendBookNotification("xxxx");
             }
         });
 
@@ -222,8 +211,8 @@ public class MainActivity extends BaseActivity {
 
     private void fb_button_event(){
         /** snack bar **/
-        String abi2 = getProperty("ro.product.cpu.abi2", "02");
-        String abi = getProperty("ro.product.cpu.abi", "01");
+        String abi2 = PropertyUtil.getProperty("ro.product.cpu.abi2", "02");
+        String abi = PropertyUtil.getProperty("ro.product.cpu.abi", "01");
         Log.e("Andy", "abi = " + abi);
         Log.e("Andy", "abi2 = " + abi2);
 
@@ -256,5 +245,25 @@ public class MainActivity extends BaseActivity {
 //                intent.setAction("android.intent.action.MAIN");
 //                intent.setClassName("com.android.settings", "com.android.settings.ManageApplications");
 //                startActivity(intent);
+    }
+
+    int bookCount = 0;
+    public void sendBookNotification(String gameName) {
+
+        PhoneInfo.getPhoneInfo(this);
+
+        String title = getString(R.string.app_name);
+        String contentText = "您预约的&lt;%1$s&gt;已上线，快来抢鲜体验";
+        contentText = String.format(contentText, gameName);
+        Notification notification = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setAutoCancel(true)
+                .setTicker(contentText)
+                .setContentTitle(title)
+                .setContentText(contentText)
+                .build();
+
+        NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        nm.notify(bookCount++, notification);
     }
 }
