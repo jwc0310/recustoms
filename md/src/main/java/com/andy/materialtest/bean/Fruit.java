@@ -1,4 +1,4 @@
-package com.andy.materialtest;
+package com.andy.materialtest.bean;
 
 /**
  * 水果:名字，图片id

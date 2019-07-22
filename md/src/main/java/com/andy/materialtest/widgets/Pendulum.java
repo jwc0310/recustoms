@@ -1,4 +1,4 @@
-package com.andy.materialtest;
+package com.andy.materialtest.widgets;
 
 import android.content.Context;
 import android.graphics.Canvas;

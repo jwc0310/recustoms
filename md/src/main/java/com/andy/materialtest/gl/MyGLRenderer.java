@@ -1,8 +1,11 @@
-package com.andy.materialtest;
+package com.andy.materialtest.gl;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView.Renderer;
 import android.opengl.GLU;
+
+import com.andy.materialtest.gl.GLBitmap;
+import com.andy.materialtest.gl.GLUtil;
 
 import java.nio.FloatBuffer;
 

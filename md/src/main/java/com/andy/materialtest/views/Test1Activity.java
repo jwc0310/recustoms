@@ -1,12 +1,14 @@
-package com.andy.materialtest;
+package com.andy.materialtest.views;
 
 import android.content.Context;
-import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
+
+import com.andy.materialtest.widgets.MultiDirectionSlidingDrawer;
+import com.andy.materialtest.R;
 
 public class Test1Activity extends BaseActivity {
 
@@ -14,9 +16,13 @@ public class Test1Activity extends BaseActivity {
     private MultiDirectionSlidingDrawer drawer;
 
     @Override
+    public int contentViewResId() {
+        return R.layout.activity_test1;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test1);
         context = this;
         drawer = (MultiDirectionSlidingDrawer) findViewById(R.id.drawer);
         findViewById(R.id.test1_fab).setOnClickListener(new View.OnClickListener() {

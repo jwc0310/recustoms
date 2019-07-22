@@ -1,4 +1,4 @@
-package com.andy.materialtest;
+package com.andy.materialtest.gl;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

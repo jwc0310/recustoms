@@ -1,4 +1,4 @@
-package com.andy.materialtest;
+package com.andy.materialtest.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.andy.materialtest.bean.Fruit;
+import com.andy.materialtest.R;
+import com.andy.materialtest.views.FruitActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.List;

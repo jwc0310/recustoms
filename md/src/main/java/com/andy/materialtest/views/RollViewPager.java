@@ -1,7 +1,9 @@
-package com.andy.materialtest;
+package com.andy.materialtest.views;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.andy.materialtest.R;
 
 public class RollViewPager extends AppCompatActivity {
 

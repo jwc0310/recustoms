@@ -1,4 +1,4 @@
-package com.andy.materialtest;
+package com.andy.materialtest.views;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.andy.materialtest.bean.Fruit;
+import com.andy.materialtest.adapters.FruitAdapter;
+import com.andy.materialtest.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,9 +47,13 @@ public class Test2Activity extends BaseActivity {
     }
 
     @Override
+    public int contentViewResId() {
+        return R.layout.activity_test2;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test2);
         textView = (TextView) findViewById(R.id.load_more);
 
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);

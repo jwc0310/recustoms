@@ -1,4 +1,4 @@
-package com.andy.materialtest;
+package com.andy.materialtest.widgets;
 
 import android.view.animation.Animation;
 import android.view.animation.Transformation;

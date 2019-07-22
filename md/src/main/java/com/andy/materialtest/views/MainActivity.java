@@ -1,11 +1,10 @@
-package com.andy.materialtest;
+package com.andy.materialtest.views;
 
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -23,7 +22,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.andy.materialtest.header.Test5Activity;
+import com.andy.materialtest.BuildConfig;
+import com.andy.materialtest.bean.Fruit;
+import com.andy.materialtest.adapters.FruitAdapter;
+import com.andy.materialtest.R;
 import com.andy.materialtest.utils.PhoneInfo;
 import com.andy.materialtest.utils.PropertyUtil;
 
@@ -51,12 +53,14 @@ public class MainActivity extends BaseActivity {
     private SwipeRefreshLayout swipeRefresh;
 
 
-
+    @Override
+    public int contentViewResId() {
+        return R.layout.activity_main;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

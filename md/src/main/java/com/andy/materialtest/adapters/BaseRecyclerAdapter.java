@@ -1,4 +1,4 @@
-package com.andy.materialtest.header;
+package com.andy.materialtest.adapters;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;

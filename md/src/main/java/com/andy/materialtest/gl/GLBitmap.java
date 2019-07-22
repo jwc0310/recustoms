@@ -1,9 +1,11 @@
-package com.andy.materialtest;
+package com.andy.materialtest.gl;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.GLUtils;
+
+import com.andy.materialtest.R;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

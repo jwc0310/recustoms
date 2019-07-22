@@ -1,4 +1,4 @@
-package com.andy.materialtest.header;
+package com.andy.materialtest.adapters;
 
 import android.content.Context;
 import android.content.res.TypedArray;

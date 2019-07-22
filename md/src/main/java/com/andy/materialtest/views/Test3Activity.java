@@ -1,4 +1,4 @@
-package com.andy.materialtest;
+package com.andy.materialtest.views;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+
+import com.andy.materialtest.bean.Fruit;
+import com.andy.materialtest.adapters.FruitMAdapter;
+import com.andy.materialtest.R;
 
 import java.util.ArrayList;
 import java.util.List;

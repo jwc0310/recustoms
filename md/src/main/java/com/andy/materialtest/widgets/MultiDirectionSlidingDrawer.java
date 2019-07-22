@@ -16,7 +16,7 @@
  * Modifications by: Alessandro Crugnola
  */
 
-package com.andy.materialtest;
+package com.andy.materialtest.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -28,7 +28,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.VelocityTracker;
@@ -37,6 +36,9 @@ import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.animation.Animation;
 import android.widget.TextView;
+
+import com.andy.materialtest.R;
+import com.andy.materialtest.gl.MyGLRenderer;
 
 public class MultiDirectionSlidingDrawer extends ViewGroup implements View.OnClickListener {
 	

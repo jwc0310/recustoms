@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,20 +20,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FruitActivity"
+            android:name=".views.FruitActivity"
             android:theme="@style/FruitActivityTheme" />
-        <activity android:name=".Test1Activity" />
-        <activity android:name=".Test2Activity" />
-        <activity android:name=".Test3Activity" />
-        <activity android:name=".Test4Activity" />
-        <activity android:name=".header.Test5Activity" />
-        <activity android:name=".RollViewPager" />
+        <activity android:name=".views.Test1Activity" />
+        <activity android:name=".views.Test2Activity" />
+        <activity android:name=".views.Test3Activity" />
+        <activity android:name=".views.Test4Activity" />
+        <activity android:name=".views.Test5Activity" />
+        <activity android:name=".views.RollViewPager" />
         <activity
-            android:name=".Main2Activity"
+            android:name=".views.Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Main3Activity"
+            android:name=".views.Main3Activity"
             android:label="@string/title_activity_main3"
             android:theme="@style/AppTheme"></activity>
     </application>

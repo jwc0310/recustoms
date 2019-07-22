@@ -1,8 +1,6 @@
 package com.andy.materialtest.bitmap;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Environment;
 
 import java.io.File;

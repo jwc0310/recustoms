@@ -13,12 +13,12 @@
         android:layout_margin="16dp"
         android:src="@mipmap/ic_launcher"/>
 
-    <com.andy.materialtest.Swing
+    <com.andy.materialtest.widgets.Swing
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"/>
 
-    <com.andy.materialtest.MultiDirectionSlidingDrawer
+    <com.andy.materialtest.widgets.MultiDirectionSlidingDrawer
         android:id="@+id/drawer"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:layout_width="60dp"
             android:layout_height="80dp" />
 
-    </com.andy.materialtest.MultiDirectionSlidingDrawer>
+    </com.andy.materialtest.widgets.MultiDirectionSlidingDrawer>
 
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,17 +1,18 @@
-package com.andy.materialtest.header;
+package com.andy.materialtest.views;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
 import com.andy.materialtest.R;
+import com.andy.materialtest.adapters.BaseRecyclerAdapter;
+import com.andy.materialtest.adapters.GridItemDecoration;
+import com.andy.materialtest.adapters.MyAdapter;
 
 import java.util.ArrayList;
 
