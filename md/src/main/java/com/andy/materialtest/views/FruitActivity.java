@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.andy.materialtest.R;
+import com.andy.materialtest.bases.BaseActivity;
 import com.bumptech.glide.Glide;
 
 public class FruitActivity extends BaseActivity {

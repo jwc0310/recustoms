@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.andy.materialtest.BuildConfig;
+import com.andy.materialtest.bases.BaseActivity;
 import com.andy.materialtest.bean.Fruit;
 import com.andy.materialtest.adapters.FruitAdapter;
 import com.andy.materialtest.R;

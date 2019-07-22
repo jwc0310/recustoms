@@ -7,6 +7,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.andy.materialtest.bases.BaseActivity;
 import com.andy.materialtest.widgets.MultiDirectionSlidingDrawer;
 import com.andy.materialtest.R;
 

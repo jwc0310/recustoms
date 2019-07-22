@@ -1,17 +1,17 @@
-package com.andy.materialtest.views;
+package com.andy.materialtest.bases;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.andy.materialtest.ActivityCollector;
+import com.andy.materialtest.framework.EventbusUtil;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    protected Context ctx;
-
     public abstract int contentViewResId();
 
+    protected Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         ActivityCollector.addActivity(this);
         ctx = this;
         setContentView(contentViewResId());
+        EventbusUtil.getInstance().register(this);
     }
 
     @Override
@@ -45,5 +46,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy(){
         super.onDestroy();
         ActivityCollector.removeActivity(this);
+        EventbusUtil.getInstance().unregister(this);
     }
 }

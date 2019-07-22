@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
 import com.andy.materialtest.R;
+import com.andy.materialtest.bases.BaseActivity;
 
 public class Test4Activity extends BaseActivity {
 
