@@ -1,4 +1,4 @@
-package com.andy.materialtest.views;
+package com.andy.materialtest.uis;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -16,7 +16,7 @@ public class Test4Activity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 }

@@ -1,4 +1,4 @@
-package com.andy.materialtest.views;
+package com.andy.materialtest.uis;
 
 import android.app.Activity;
 import android.os.Bundle;

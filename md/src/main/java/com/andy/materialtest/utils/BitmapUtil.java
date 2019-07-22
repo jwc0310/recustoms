@@ -1,4 +1,4 @@
-package com.andy.materialtest.bitmap;
+package com.andy.materialtest.utils;
 
 import android.graphics.Bitmap;
 import android.os.Environment;

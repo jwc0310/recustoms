@@ -1,4 +1,4 @@
-package com.andy.materialtest.views;
+package com.andy.materialtest.uis;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +24,7 @@ public class FruitActivity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         String fruitName = intent.getStringExtra(FRUIT_NAME);

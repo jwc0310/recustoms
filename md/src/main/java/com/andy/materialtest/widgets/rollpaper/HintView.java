@@ -1,4 +1,4 @@
-package com.andy.materialtest.rollpaper;
+package com.andy.materialtest.widgets.rollpaper;
 
 
 public interface HintView {

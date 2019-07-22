@@ -5,21 +5,26 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.andy.materialtest.ActivityCollector;
-import com.andy.materialtest.framework.EventbusUtil;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     public abstract int contentViewResId();
 
     protected Context ctx;
+    protected AppCompatActivity activity;
+    private Unbinder unbinder;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityCollector.addActivity(this);
         ctx = this;
+        activity = this;
         setContentView(contentViewResId());
-        EventbusUtil.getInstance().register(this);
+        unbinder = ButterKnife.bind(this);
     }
 
     @Override
@@ -43,9 +48,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy(){
+    public void onDestroy(){
+        if (unbinder != null) {
+            unbinder.unbind();
+            unbinder = null;
+        }
         super.onDestroy();
         ActivityCollector.removeActivity(this);
-        EventbusUtil.getInstance().unregister(this);
     }
 }

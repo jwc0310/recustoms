@@ -26,3 +26,40 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+
+// open source version manager
+ext {
+    compileSdkVersion = 28
+    buildToolsVersion = "28.0.2"
+
+    minSdkVersion = 17
+    targetSdkVersion = 28
+
+    //release or debug
+    minifyEnabled = false
+
+    //com.android.support 版本
+    supportV7 = "28.0.0"
+    //glideVersion
+    glideVersion = "4.8.0"
+    //eventBusVersion
+    eventbusVersion = "3.0.0"
+    //circleImageViewVersion
+    circleimageVersion = "2.1.0"
+
+    //okhttp3
+    okhttpVersion = "3.11.0"
+    //okio
+    okioVersion = "1.17.4"
+    //retrofit 系列
+    retrofitVersion = "2.4.0"
+    //rxjava2
+    rxjavaVersion = "2.2.1"
+    //rxandroid
+    rxandroidVersion = "2.1.0"
+    //rxbinding
+    rxbindingVersion = "2.0.0"
+    //butterknife
+    butterknifeVersion = "8.4.0"
+}

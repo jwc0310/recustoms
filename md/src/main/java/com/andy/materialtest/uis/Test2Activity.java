@@ -1,4 +1,4 @@
-package com.andy.materialtest.views;
+package com.andy.materialtest.uis;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -53,7 +53,7 @@ public class Test2Activity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         textView = (TextView) findViewById(R.id.load_more);
 

@@ -1,4 +1,4 @@
-package com.andy.materialtest.views;
+package com.andy.materialtest.uis;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -24,11 +24,15 @@ import android.widget.Toast;
 
 import com.andy.materialtest.BuildConfig;
 import com.andy.materialtest.bases.BaseActivity;
+import com.andy.materialtest.bases.TestEvent;
 import com.andy.materialtest.bean.Fruit;
 import com.andy.materialtest.adapters.FruitAdapter;
 import com.andy.materialtest.R;
 import com.andy.materialtest.utils.PhoneInfo;
 import com.andy.materialtest.utils.PropertyUtil;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -60,7 +64,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -270,5 +274,10 @@ public class MainActivity extends BaseActivity {
 
         NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         nm.notify(bookCount++, notification);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(TestEvent event) {
+        Log.e("Main", event.toString());
     }
 }

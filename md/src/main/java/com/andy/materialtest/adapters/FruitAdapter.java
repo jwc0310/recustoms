@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.andy.materialtest.bean.Fruit;
 import com.andy.materialtest.R;
-import com.andy.materialtest.views.FruitActivity;
+import com.andy.materialtest.uis.FruitActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.List;

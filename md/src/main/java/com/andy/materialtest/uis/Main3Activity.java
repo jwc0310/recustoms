@@ -1,4 +1,4 @@
-package com.andy.materialtest.views;
+package com.andy.materialtest.uis;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

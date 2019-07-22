@@ -1,4 +1,4 @@
-package com.andy.materialtest.views;
+package com.andy.materialtest.uis;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ public class Test1Activity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
         drawer = (MultiDirectionSlidingDrawer) findViewById(R.id.drawer);
