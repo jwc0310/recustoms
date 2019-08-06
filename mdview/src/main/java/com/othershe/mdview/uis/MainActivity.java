@@ -1,6 +1,8 @@
-package com.othershe.mdview;
+package com.othershe.mdview.uis;
 
+import android.Manifest;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -13,7 +15,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -24,14 +25,21 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.othershe.mdview.R;
+import com.othershe.mdview.bases.BaseActivity;
+import com.othershe.mdview.bases.BaseFragment;
+import com.othershe.mdview.util.Logger;
+import com.tbruyelle.rxpermissions2.Permission;
+import com.tbruyelle.rxpermissions2.RxPermissions;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
+import io.reactivex.functions.Consumer;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
     @BindView(R.id.nav_view)
     NavigationView mNavView;
     @BindView(R.id.drawer_layout)
@@ -47,20 +55,51 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.main_content)
     CoordinatorLayout mCoordinatorLayout;
 
-    private Unbinder unbinder;
-    private ArrayList<TypeFragment> mFragments;
+    private ArrayList<BaseFragment> mFragments;
     private ArrayList<String> mTitles;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public int contentViewResId() {
+        return R.layout.activity_main;
+    }
 
-        unbinder = ButterKnife.bind(this);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         setUpDrawer();
         initNavigationView();
         initContent();
+        requestPermissions();
+    }
+
+    public void requestPermissions() {
+        if (Build.VERSION.SDK_INT > 22) {
+            RxPermissions rxPermissions = new RxPermissions(this);
+            rxPermissions.requestEach(Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    .subscribe(new Consumer<Permission>() {
+
+                        @Override
+                        public void accept(Permission permission) throws Exception {
+                            if (permission.name == Manifest.permission.READ_EXTERNAL_STORAGE) {
+                                if (permission.granted) {
+                                    Logger.getInstance().e("main", permission.name +" granted");
+                                } else {
+                                    Logger.getInstance().e("main", permission.name +" rejected");
+                                    finish();
+                                }
+                            } else if (permission.name == Manifest.permission.WRITE_EXTERNAL_STORAGE) {
+                                if (permission.granted) {
+                                    Logger.getInstance().e("main", permission.name +" granted");
+                                } else {
+                                    Logger.getInstance().e("main", permission.name +" rejected");
+                                    finish();
+                                }
+                            }
+                        }
+                    });
+        }
     }
 
     private void initContent() {
@@ -69,26 +108,29 @@ public class MainActivity extends AppCompatActivity {
         mFragments.add(TypeFragment.newInstance("军事"));
         mFragments.add(TypeFragment.newInstance("科技"));
         mFragments.add(TypeFragment.newInstance("娱乐"));
+        mFragments.add(new CustomFragment());
 
         mTitles = new ArrayList<>();
         mTitles.add("热点");
         mTitles.add("军事");
         mTitles.add("科技");
         mTitles.add("娱乐");
+        mTitles.add("custom");
 
         TabPagerAdapter adapter = new TabPagerAdapter(getSupportFragmentManager());
         adapter.setArguments(mFragments, mTitles);
         mViewPager.setAdapter(adapter);
 
         //设置TabLayout可滚动，保证Tab数量过多时也可正常显示
-        mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+//        mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        mTabLayout.setTabMode(TabLayout.MODE_FIXED);
         //两个参数分别对应Tab未选中的文字颜色和选中的文字颜色
         mTabLayout.setTabTextColors(Color.WHITE, Color.RED);
         //绑定ViewPager
         mTabLayout.setupWithViewPager(mViewPager);
         //设置TabLayout的布局方式（GRAVITY_FILL、GRAVITY_CENTER）
-        mTabLayout.setTabMode(TabLayout.MODE_FIXED);
-        mTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+//        mTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        mTabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
         //设置TabLayout的选择监听
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -104,7 +146,9 @@ public class MainActivity extends AppCompatActivity {
             //重复点击时回调
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                scrollToTop(mFragments.get(tab.getPosition()).getTypeList());
+                BaseFragment fragment = mFragments.get(tab.getPosition());
+                if (fragment instanceof TypeFragment)
+                    scrollToTop(((TypeFragment) fragment).getTypeList());
             }
         });
 
@@ -181,15 +225,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public class TabPagerAdapter extends FragmentPagerAdapter {
-        private List<TypeFragment> fragments;
+    private class TabPagerAdapter extends FragmentPagerAdapter {
+        private List<BaseFragment> fragments;
         private List<String> titles;
 
         public TabPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
-        public void setArguments(List<TypeFragment> fragments, List<String> titles) {
+        public void setArguments(List<BaseFragment> fragments, List<String> titles) {
             this.fragments = fragments;
             this.titles = titles;
         }
@@ -230,8 +274,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
     }
 }

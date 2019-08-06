@@ -11,14 +11,15 @@
         android:id="@+id/nav_head_icon"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginLeft="20dp"
+        android:contentDescription="@string/app_name"
+        android:layout_marginStart="20dp"
         android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/nav_head_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
         android:textSize="18sp" />
 
 </LinearLayout>

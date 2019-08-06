@@ -1,4 +1,4 @@
-package com.othershe.mdview;
+package com.othershe.mdview.uis;
 
 import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -12,6 +12,8 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ImageView;
+
+import com.othershe.mdview.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

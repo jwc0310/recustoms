@@ -58,7 +58,9 @@ public class FruitMAdapter extends BaseAdapter {
 
         Fruit fruit = list.get(i);
         holder.fruitName.setText(fruit.getName());
-        Glide.with(context).load(fruit.getImageId()).into(holder.fruitImage);
+        Glide.with(context)
+                .load(fruit.getImageId())
+                .into(holder.fruitImage);
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

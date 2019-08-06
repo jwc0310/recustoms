@@ -1,4 +1,4 @@
-package com.othershe.mdview;
+package com.othershe.mdview.uis;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,20 +10,42 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.othershe.mdview.R;
+import com.othershe.mdview.TypeListAdapter;
+import com.othershe.mdview.bases.BaseFragment;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class TypeFragment extends Fragment {
+public class TypeFragment extends BaseFragment {
     @BindView(R.id.type_list)
     RecyclerView mTypeList;
 
     private String mType;
     private Context mContext;
-    private Unbinder unbinder;
     private ArrayList<String> datas = new ArrayList<>();
+
+    @Override
+    protected int layoutId() {
+        return R.layout.fragment_type;
+    }
+
+    @Override
+    protected void initView() {
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        mTypeList.setLayoutManager(layoutManager);
+        TypeListAdapter adapter = new TypeListAdapter(datas);
+        adapter.setOnItemClickListener(new TypeListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(String data, int position) {
+                startActivity(new Intent(mContext, DetailActivity.class));
+            }
+        });
+        mTypeList.setAdapter(adapter);
+    }
 
     public TypeFragment() {
         // Required empty public constructor
@@ -55,27 +77,6 @@ public class TypeFragment extends Fragment {
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_type, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        init();
-        return view;
-    }
-
-    private void init() {
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        mTypeList.setLayoutManager(layoutManager);
-        TypeListAdapter adapter = new TypeListAdapter(datas);
-        adapter.setOnItemClickListener(new TypeListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(String data, int position) {
-                startActivity(new Intent(mContext, DetailActivity.class));
-            }
-        });
-        mTypeList.setAdapter(adapter);
-    }
 
     public RecyclerView getTypeList() {
         return mTypeList;
@@ -84,6 +85,5 @@ public class TypeFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
     }
 }

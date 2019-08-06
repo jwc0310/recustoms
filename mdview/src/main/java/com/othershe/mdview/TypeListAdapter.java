@@ -38,7 +38,7 @@ public class TypeListAdapter extends RecyclerView.Adapter<TypeListAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         ViewGroup.LayoutParams params = holder.itemTv.getLayoutParams();
         params.height = mHeights.get(position);
         holder.itemTv.setLayoutParams(params);
@@ -47,7 +47,7 @@ public class TypeListAdapter extends RecyclerView.Adapter<TypeListAdapter.ViewHo
             holder.itemLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mListner.onItemClick(mDatas.get(position), position);
+                    mListner.onItemClick(mDatas.get(holder.getAdapterPosition()), holder.getAdapterPosition());
                 }
             });
         }

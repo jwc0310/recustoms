@@ -1,0 +1,66 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.othershe.mdview.uis.TypeFragment">
+
+    <LinearLayout
+        android:id="@+id/pblayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:indeterminateTint="#00ffff"
+            android:indeterminateTintMode="src_atop"
+            android:visibility="visible" />
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:indeterminateTint="#00ffff"
+            android:indeterminateTintMode="src_in"
+            android:layout_marginLeft="10dp"
+            android:visibility="visible" />
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:indeterminateTint="#00ffff"
+            android:indeterminateTintMode="src_over"
+            android:layout_marginLeft="10dp"
+            android:visibility="visible" />
+
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:indeterminateTint="#00ffff"
+            android:indeterminateTintMode="add"
+            android:layout_marginLeft="10dp"
+            android:visibility="visible" />
+
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:indeterminateTint="#00ffff"
+            android:indeterminateTintMode="multiply"
+            android:layout_marginLeft="10dp"
+            android:visibility="visible" />
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:indeterminateTint="#00ffff"
+            android:indeterminateTintMode="screen"
+            android:layout_marginLeft="10dp"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

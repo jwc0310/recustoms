@@ -1,0 +1,54 @@
+抽象类  Abstraction
+
+    public abstract class SizeAbstractionClass {
+
+        protected  ColorInterface colorInterface;
+
+        public void setColorInterface(ColorInterface colorInterface) { // 传进来一个颜色的实体
+            this.colorInterface = colorInterface;
+        }
+
+        public abstract void size();
+    }
+
+
+实现类接口 Implementor
+    public interface ColorInterface { // 颜色接口
+          void color();
+    }
+
+ConcreteImplementor（具体实现类）
+
+    public class BulePaint  implements   ColorInterface {
+        @Override
+        public void color() {
+            System.out.print("蓝色画笔");
+        }
+    }
+
+    public class RedPaint  implements   ColorInterface {
+        @Override
+        public void color() {
+            System.out.print("红色画笔");
+        }
+    }
+    ...
+
+RefinedAbstraction（扩充抽象类）
+    public class  BigPaint  extends   SizeAbstractionClass {
+        @Override
+        public void size() {  // 实现了在Abstraction中声明的抽象业务方法
+            System.out.print("大号画笔");
+        }
+
+        public void  userColor() { // 调用Implementor中定义的业务方法
+            colorInterface.color();
+        }
+    }
+
+
+    ColorInterface  bulePaint = new BulePaint(); // 实例化不同颜色的画笔
+            BigPaint bigPaint = new BigPaint();  // 实例化不同尺寸的画笔
+            bigPaint.setColorInterface(bulePaint); // 将颜色和尺寸进行统一组合
+            bigPaint.size();  // 调用尺寸
+            bigPaint.userColor(); // 调用颜色
