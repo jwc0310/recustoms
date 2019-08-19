@@ -58,6 +58,35 @@ public class MainActivity extends BaseActivity {
     private ArrayList<BaseFragment> mFragments;
     private ArrayList<String> mTitles;
 
+    private static ArrayList<String> tabs = new ArrayList<String>();
+
+    private void initTabs() {
+        tabs.add("热点");
+        tabs.add("军事");
+        tabs.add("科技");
+        tabs.add("娱乐");
+        tabs.add("其他1");
+        tabs.add("其他2");
+        tabs.add("其他3");
+        tabs.add("其他4");
+        tabs.add("其他5");
+        tabs.add("其他6");
+        tabs.add("其他7");
+        tabs.add("其他8");
+        tabs.add("其他9");
+        tabs.add("其他10");
+        tabs.add("其他11");
+        tabs.add("其他12");
+        tabs.add("其他13");
+        tabs.add("其他14");
+        tabs.add("其他15");
+        tabs.add("其他16");
+        tabs.add("其他17");
+        tabs.add("其他18");
+        tabs.add("其他19");
+        tabs.add("其他20");
+    }
+
     @Override
     public int contentViewResId() {
         return R.layout.activity_main;
@@ -67,6 +96,7 @@ public class MainActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        initTabs();
         setUpDrawer();
         initNavigationView();
         initContent();
@@ -104,17 +134,22 @@ public class MainActivity extends BaseActivity {
 
     private void initContent() {
         mFragments = new ArrayList<>();
-        mFragments.add(TypeFragment.newInstance("热点"));
-        mFragments.add(TypeFragment.newInstance("军事"));
-        mFragments.add(TypeFragment.newInstance("科技"));
-        mFragments.add(TypeFragment.newInstance("娱乐"));
+        int size = tabs.size();
+        for (int i = 0; i < size; i++) {
+            mFragments.add(TypeFragment.newInstance("热点"));
+            mFragments.add(TypeFragment.newInstance("军事"));
+            mFragments.add(TypeFragment.newInstance("科技"));
+            mFragments.add(TypeFragment.newInstance("娱乐"));
+        }
         mFragments.add(new CustomFragment());
 
         mTitles = new ArrayList<>();
-        mTitles.add("热点");
-        mTitles.add("军事");
-        mTitles.add("科技");
-        mTitles.add("娱乐");
+        for (int i = 0; i < size; i++) {
+            mTitles.add("热点");
+            mTitles.add("军事");
+            mTitles.add("科技");
+            mTitles.add("娱乐");
+        }
         mTitles.add("custom");
 
         TabPagerAdapter adapter = new TabPagerAdapter(getSupportFragmentManager());
@@ -122,8 +157,8 @@ public class MainActivity extends BaseActivity {
         mViewPager.setAdapter(adapter);
 
         //设置TabLayout可滚动，保证Tab数量过多时也可正常显示
-//        mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+        mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+//        mTabLayout.setTabMode(TabLayout.MODE_FIXED);
         //两个参数分别对应Tab未选中的文字颜色和选中的文字颜色
         mTabLayout.setTabTextColors(Color.WHITE, Color.RED);
         //绑定ViewPager

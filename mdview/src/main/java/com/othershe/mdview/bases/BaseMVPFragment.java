@@ -10,15 +10,16 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseMVPFragment<T extends BasePresenter> extends Fragment {
 
     private Context mContext;
     private Unbinder unbinder;
+    protected T presenter;
 
     protected abstract int layoutId();
     protected abstract void initView();
 
-    public BaseFragment() {
+    public BaseMVPFragment() {
         // Required empty public constructor
     }
 
@@ -48,5 +49,8 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        if (presenter != null) {
+            presenter.detachView();
+        }
     }
 }
