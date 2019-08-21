@@ -1,4 +1,4 @@
-package com.othershe.mdview.contract;
+package com.othershe.mdview.MVP.contract;
 
 import com.othershe.mdview.bases.IBaseView;
 

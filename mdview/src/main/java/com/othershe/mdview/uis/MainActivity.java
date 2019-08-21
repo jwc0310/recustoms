@@ -3,6 +3,7 @@ package com.othershe.mdview.uis;
 import android.Manifest;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -15,7 +16,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -33,7 +33,10 @@ import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
+import java.util.Set;
 
 import butterknife.BindView;
 import io.reactivex.functions.Consumer;
@@ -58,33 +61,31 @@ public class MainActivity extends BaseActivity {
     private ArrayList<BaseFragment> mFragments;
     private ArrayList<String> mTitles;
 
-    private static ArrayList<String> tabs = new ArrayList<String>();
-
     private void initTabs() {
-        tabs.add("热点");
-        tabs.add("军事");
-        tabs.add("科技");
-        tabs.add("娱乐");
-        tabs.add("其他1");
-        tabs.add("其他2");
-        tabs.add("其他3");
-        tabs.add("其他4");
-        tabs.add("其他5");
-        tabs.add("其他6");
-        tabs.add("其他7");
-        tabs.add("其他8");
-        tabs.add("其他9");
-        tabs.add("其他10");
-        tabs.add("其他11");
-        tabs.add("其他12");
-        tabs.add("其他13");
-        tabs.add("其他14");
-        tabs.add("其他15");
-        tabs.add("其他16");
-        tabs.add("其他17");
-        tabs.add("其他18");
-        tabs.add("其他19");
-        tabs.add("其他20");
+        mTitles.add("图片");
+        mTitles.add("热点");
+        mTitles.add("军事");
+        mTitles.add("科技");
+        mTitles.add("娱乐");
+        mTitles.add("其他2");
+        mTitles.add("其他3");
+        mTitles.add("其他4");
+        mTitles.add("其他5");
+        mTitles.add("其他6");
+        mTitles.add("其他7");
+        mTitles.add("其他8");
+        mTitles.add("其他9");
+        mTitles.add("其他10");
+        mTitles.add("其他11");
+        mTitles.add("其他12");
+        mTitles.add("其他13");
+        mTitles.add("其他14");
+        mTitles.add("其他15");
+        mTitles.add("其他16");
+        mTitles.add("其他17");
+        mTitles.add("其他18");
+        mTitles.add("其他19");
+        mTitles.add("其他20");
     }
 
     @Override
@@ -96,7 +97,6 @@ public class MainActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        initTabs();
         setUpDrawer();
         initNavigationView();
         initContent();
@@ -134,23 +134,19 @@ public class MainActivity extends BaseActivity {
 
     private void initContent() {
         mFragments = new ArrayList<>();
-        int size = tabs.size();
-        for (int i = 0; i < size; i++) {
-            mFragments.add(TypeFragment.newInstance("热点"));
-            mFragments.add(TypeFragment.newInstance("军事"));
-            mFragments.add(TypeFragment.newInstance("科技"));
-            mFragments.add(TypeFragment.newInstance("娱乐"));
-        }
-        mFragments.add(new CustomFragment());
-
         mTitles = new ArrayList<>();
+        initTabs();
+        int size = mTitles.size();
         for (int i = 0; i < size; i++) {
-            mTitles.add("热点");
-            mTitles.add("军事");
-            mTitles.add("科技");
-            mTitles.add("娱乐");
+            if (mTitles.get(i).equals("图片")) {
+                mFragments.add(PicFragment.newInstance(""));
+            } else {
+                mFragments.add(TypeFragment.newInstance(mTitles.get(i)));
+            }
         }
+
         mTitles.add("custom");
+        mFragments.add(new CustomFragment());
 
         TabPagerAdapter adapter = new TabPagerAdapter(getSupportFragmentManager());
         adapter.setArguments(mFragments, mTitles);
@@ -184,13 +180,31 @@ public class MainActivity extends BaseActivity {
                 BaseFragment fragment = mFragments.get(tab.getPosition());
                 if (fragment instanceof TypeFragment)
                     scrollToTop(((TypeFragment) fragment).getTypeList());
+                else if (fragment instanceof PicFragment) {
+                    scrollToTop(((PicFragment)fragment).getTypeList());
+                }
             }
         });
 
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                String name = null;
+//                if (name.contains("abcd")) {
+//
+//                }
+
+                Properties properties = new Properties();
+                String string = properties.getProperty("ro.product.name");
+
+                Set<String> stringSet =  properties.stringPropertyNames();
+                Iterator<String> iterator  = stringSet.iterator();
+                while(iterator.hasNext()) {
+                    String key = iterator.next();
+                    System.out.println("property key = " + key+", value = " + properties.getProperty(key));
+                }
                 Snackbar.make(mCoordinatorLayout, "点我分享哦！", Snackbar.LENGTH_SHORT).show();
+
             }
         });
     }
