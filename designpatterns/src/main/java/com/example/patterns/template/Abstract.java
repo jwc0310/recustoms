@@ -1,4 +1,4 @@
-package com.example.template;
+package com.example.patterns.template;
 
 /**
  * 模板方法模式是类的行为模式
