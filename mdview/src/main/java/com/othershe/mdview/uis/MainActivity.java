@@ -1,6 +1,9 @@
 package com.othershe.mdview.uis;
 
 import android.Manifest;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +22,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,6 +33,7 @@ import com.othershe.mdview.R;
 import com.othershe.mdview.bases.BaseActivity;
 import com.othershe.mdview.bases.BaseFragment;
 import com.othershe.mdview.util.Logger;
+import com.othershe.mdview.util.Xyutil;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -101,6 +106,8 @@ public class MainActivity extends BaseActivity {
         initNavigationView();
         initContent();
         requestPermissions();
+
+        Xyutil.checkFunc();
     }
 
     public void requestPermissions() {
@@ -194,15 +201,16 @@ public class MainActivity extends BaseActivity {
 //
 //                }
 
-                Properties properties = new Properties();
-                String string = properties.getProperty("ro.product.name");
+//                Properties properties = new Properties();
+//                String string = properties.getProperty("ro.product.name");
+//
+//                Set<String> stringSet =  properties.stringPropertyNames();
+//                Iterator<String> iterator  = stringSet.iterator();
+//                while(iterator.hasNext()) {
+//                    String key = iterator.next();
+//                    System.out.println("property key = " + key+", value = " + properties.getProperty(key));
+//                }
 
-                Set<String> stringSet =  properties.stringPropertyNames();
-                Iterator<String> iterator  = stringSet.iterator();
-                while(iterator.hasNext()) {
-                    String key = iterator.next();
-                    System.out.println("property key = " + key+", value = " + properties.getProperty(key));
-                }
                 Snackbar.make(mCoordinatorLayout, "点我分享哦！", Snackbar.LENGTH_SHORT).show();
 
             }
