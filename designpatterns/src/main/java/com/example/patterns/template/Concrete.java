@@ -1,6 +1,4 @@
-package com.examplepatterns.template;
-
-import com.example.patterns.template.Abstract;
+package com.example.patterns.template;
 
 /**
  * 模板方法模式是类的行为模式

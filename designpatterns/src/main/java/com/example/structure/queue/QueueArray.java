@@ -7,12 +7,36 @@ package com.example.structure.queue;
  *
  */
 
-public class Queue<T> {
+public class QueueArray<T> {
 
     private T[] datas;  //使用数组作为队列元素容器
     private int maxSize;  //队列容量
     private int front;    //头指针
     private int rear;     //尾指针
+
+    public int getMaxSize() {
+        return maxSize;
+    }
+
+    public void setMaxSize(int maxSize) {
+        this.maxSize = maxSize;
+    }
+
+    public int getFront() {
+        return front;
+    }
+
+    public void setFront(int front) {
+        this.front = front;
+    }
+
+    public int getRear() {
+        return rear;
+    }
+
+    public void setRear(int rear) {
+        this.rear = rear;
+    }
 
 
     //初始化指针
@@ -23,7 +47,7 @@ public class Queue<T> {
 
     //队列初始化
     @SuppressWarnings("unchecked")
-    public Queue(int maxSize) {
+    public QueueArray(int maxSize) {
         if (maxSize < 1)
             maxSize = 1;
 
@@ -73,7 +97,30 @@ public class Queue<T> {
     }
 
 
+    public static void main(String[] args) {
+        QueueArray<Character> myqueue = new QueueArray<>(5);
 
+        //pan kong
+        System.out.println("is null ? " + myqueue.isNull());
+        System.out.println("is full ? " + myqueue.isFull());
+
+        myqueue.push('A');
+        myqueue.push('B');
+        myqueue.push('C');
+        myqueue.push('D');
+        myqueue.push('E');
+
+        System.out.println("is null ? " + myqueue.isNull());
+        System.out.println("is full ? " + myqueue.isFull());
+
+        Character data1 = myqueue.pop();
+
+        System.out.println("pop " + data1);
+
+        System.out.println("is null ? " + myqueue.isNull());
+        System.out.println("is full ? " + myqueue.isFull());
+
+    }
 
 
 }

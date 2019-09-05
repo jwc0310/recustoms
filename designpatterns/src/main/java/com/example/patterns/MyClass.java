@@ -1,9 +1,7 @@
 package com.example.patterns;
 
 import com.example.patterns.template.Abstract;
-import com.examplepatterns.template.Concrete;
-
-
+import com.example.patterns.template.Concrete;
 
 public class MyClass {
 
