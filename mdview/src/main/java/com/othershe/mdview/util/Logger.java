@@ -4,7 +4,7 @@ import android.util.Log;
 
 public class Logger {
 
-    private static boolean debuggable = true;
+    private boolean debuggable = true;
 
     private static Logger instance;
 

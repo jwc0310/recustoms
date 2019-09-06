@@ -90,7 +90,6 @@ public class MainActivity extends BaseActivity {
         mTitles.add("其他17");
         mTitles.add("其他18");
         mTitles.add("其他19");
-        mTitles.add("其他20");
     }
 
     @Override
@@ -152,6 +151,8 @@ public class MainActivity extends BaseActivity {
             }
         }
 
+        mTitles.add("weixin");
+        mFragments.add(new WxFragment());
         mTitles.add("custom");
         mFragments.add(new CustomFragment());
 

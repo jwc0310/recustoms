@@ -1,4 +1,4 @@
-package com.othershe.mdview.util;
+package com.othershe.mdview.java;
 
 public class Test {
 

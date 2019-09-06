@@ -1,0 +1,62 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:wx="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:background="#ffeeeeee"
+        android:padding="8dp">
+
+        <com.othershe.mdview.view.TabView
+            android:id="@+id/tab_weixin"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            wx:tabImage="@mipmap/weixin_normal"
+            wx:tabSelectedImage="@mipmap/weixin_pressed"
+            wx:tabTitle="微信"
+            wx:tabColor="#ff11e53f"/>
+
+        <com.othershe.mdview.view.TabView
+            android:id="@+id/tab_contact"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            wx:tabImage="@mipmap/contact_list_normal"
+            wx:tabSelectedImage="@mipmap/contact_list_pressed"
+            wx:tabTitle="联系人"
+            wx:tabColor="#ff11e53f"/>
+
+        <com.othershe.mdview.view.TabView
+            android:id="@+id/tab_find"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            wx:tabImage="@mipmap/find_normal"
+            wx:tabSelectedImage="@mipmap/find_pressed"
+            wx:tabTitle="微信"
+            wx:tabColor="#ff11e53f"/>
+
+        <com.othershe.mdview.view.TabView
+            android:id="@+id/tab_profile"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            wx:tabImage="@mipmap/profile_normal"
+            wx:tabSelectedImage="@mipmap/profile_pressed"
+            wx:tabTitle="微信"
+            wx:tabColor="#ff11e53f"/>
+
+    </LinearLayout>
+
+
+</FrameLayout>
