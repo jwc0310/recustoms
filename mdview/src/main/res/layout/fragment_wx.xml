@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             wx:tabImage="@mipmap/find_normal"
             wx:tabSelectedImage="@mipmap/find_pressed"
-            wx:tabTitle="微信"
+            wx:tabTitle="发现"
             wx:tabColor="#ff11e53f"/>
 
         <com.othershe.mdview.view.TabView
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             wx:tabImage="@mipmap/profile_normal"
             wx:tabSelectedImage="@mipmap/profile_pressed"
-            wx:tabTitle="微信"
+            wx:tabTitle="我"
             wx:tabColor="#ff11e53f"/>
 
     </LinearLayout>

@@ -49,6 +49,7 @@ public class WxFragment extends BaseFragment {
 
     MyPaperAdapter adapter;
     private List<String> names;
+    private List<TabView> mTabViews = new ArrayList<>();
 
     @Override
     protected int layoutId() {
@@ -64,16 +65,34 @@ public class WxFragment extends BaseFragment {
         names.add("我");
         adapter = new MyPaperAdapter(names);
 
+        mTabViews.add(tabWeixin);
+        mTabViews.add(tabContact);
+        mTabViews.add(tabFind);
+        mTabViews.add(tabProfile);
+
         // 设置ViewPager两页之间的距离
         viewPager.setPageMargin(0);
         // 设置预加载的页数，我们知道默认情况下这个参数为1，也就是左右各预加载一页，但是我们这里要让左右各预加载两页
-        viewPager.setOffscreenPageLimit(3);
+        viewPager.setOffscreenPageLimit(names.size() -1);
         viewPager.setAdapter(adapter);
         //viewPager.setPageTransformer(false, new ScaleTransformer());
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            /**
+             * @param i 滑动的时候，position总是代表左边的View， position+1总是代表右边的View
+             * @param v 左边View位移的比例
+             * @param i1 左边View位移的像素
+             */
+
             @Override
             public void onPageScrolled(int i, float v, int i1) {
                 Logger.getInstance().e(TAG, "onPageScrolled: " + i + ", " + v + ", " + i1);
+                mTabViews.get(i).setXPercentage(1 - v);
+
+                if (v > 0) {
+                    mTabViews.get(i + 1).setXPercentage(v);
+                }
+
             }
 
             @Override
@@ -86,20 +105,43 @@ public class WxFragment extends BaseFragment {
                 Logger.getInstance().e(TAG, "onPageScrollStateChanged: " + i);
             }
         });
+
     }
 
     @OnClick({R.id.tab_weixin, R.id.tab_contact, R.id.tab_find, R.id.tab_profile})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tab_weixin:
+                changeTab(0);
                 break;
             case R.id.tab_contact:
+                changeTab(1);
                 break;
             case R.id.tab_find:
+                changeTab(2);
                 break;
             case R.id.tab_profile:
+                changeTab(3);
                 break;
         }
+    }
+
+    private void updateCurrentTab(int index) {
+        for (int i = 0; i < mTabViews.size(); i++) {
+            if (index == i) {
+                mTabViews.get(i).setXPercentage(1);
+            } else {
+                mTabViews.get(i).setXPercentage(0);
+            }
+        }
+    }
+
+    private void changeTab(int index) {
+        if (viewPager.getCurrentItem() == index)
+            return;
+        //设置 smoothscroll false  否则 中间的都变化一遍
+        viewPager.setCurrentItem(index, false);
+        updateCurrentTab(index);
     }
 
     static class MyPaperAdapter extends PagerAdapter {
