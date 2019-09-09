@@ -1,9 +1,6 @@
 package com.othershe.mdview.uis;
 
 import android.Manifest;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,7 +19,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,15 +29,12 @@ import com.othershe.mdview.R;
 import com.othershe.mdview.bases.BaseActivity;
 import com.othershe.mdview.bases.BaseFragment;
 import com.othershe.mdview.util.Logger;
-import com.othershe.mdview.util.Xyutil;
+import com.othershe.mdview.util.TabLayoutUtil;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
-import java.util.Set;
 
 import butterknife.BindView;
 import io.reactivex.functions.Consumer;
@@ -72,13 +65,13 @@ public class MainActivity extends BaseActivity {
         mTitles.add("军事");
         mTitles.add("科技");
         mTitles.add("娱乐");
-        mTitles.add("其他2");
-        mTitles.add("其他3");
-        mTitles.add("其他4");
-        mTitles.add("其他5");
-        mTitles.add("其他6");
+        mTitles.add("其他2111111");
+        mTitles.add("其他3222");
+        mTitles.add("其他4333");
+        mTitles.add("其他54444444444");
+        mTitles.add("其他6111");
         mTitles.add("其他7");
-        mTitles.add("其他8");
+        mTitles.add("其他822222");
         mTitles.add("其他9");
         mTitles.add("其他10");
         mTitles.add("其他11");
@@ -105,8 +98,6 @@ public class MainActivity extends BaseActivity {
         initNavigationView();
         initContent();
         requestPermissions();
-
-        Xyutil.checkFunc();
     }
 
     public void requestPermissions() {
@@ -151,8 +142,12 @@ public class MainActivity extends BaseActivity {
             }
         }
 
-        mTitles.add("weixin");
-        mFragments.add(new WxFragment());
+        mTitles.add(4, "weixin");
+        mFragments.add(4, new WxFragment());
+
+        mTitles.add(5, "EnhanceTabLayout");
+        mFragments.add(5, new EnhanceTabLayoutFragment());
+
         mTitles.add("custom");
         mFragments.add(new CustomFragment());
 
@@ -193,25 +188,11 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+        TabLayoutUtil.setTabWidth(mTabLayout, 20);
 
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                String name = null;
-//                if (name.contains("abcd")) {
-//
-//                }
-
-//                Properties properties = new Properties();
-//                String string = properties.getProperty("ro.product.name");
-//
-//                Set<String> stringSet =  properties.stringPropertyNames();
-//                Iterator<String> iterator  = stringSet.iterator();
-//                while(iterator.hasNext()) {
-//                    String key = iterator.next();
-//                    System.out.println("property key = " + key+", value = " + properties.getProperty(key));
-//                }
-
                 Snackbar.make(mCoordinatorLayout, "点我分享哦！", Snackbar.LENGTH_SHORT).show();
 
             }

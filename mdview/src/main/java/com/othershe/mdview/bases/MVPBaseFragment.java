@@ -10,25 +10,30 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class MVPBaseFragment<T extends BasePresenter> extends BaseFragment implements IBaseView {
 
-    private Context mContext;
-    private Unbinder unbinder;
+    protected T presenter;
 
-    protected abstract int layoutId();
-    protected abstract void initView();
+    /**
+     * 初始化mPresenter
+     */
+    protected abstract void initPresenter();
+
+    @Override
     protected void init() {
-
+        initPresenter();
+        if (presenter != null) {
+            presenter.attachView(this);
+        }
     }
 
-    public BaseFragment() {
+    public MVPBaseFragment() {
         // Required empty public constructor
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mContext = context;
     }
 
     @Override
@@ -38,19 +43,12 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(layoutId(), container, false);
-        unbinder = ButterKnife.bind(this, view);
-        init();
-        initView();
-        return view;
-    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        if (presenter != null) {
+            presenter.detachView();
+        }
     }
 }
