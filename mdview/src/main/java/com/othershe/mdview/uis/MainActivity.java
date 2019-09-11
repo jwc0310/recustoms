@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.othershe.mdview.R;
+import com.othershe.mdview.awpms.Ams;
 import com.othershe.mdview.bases.BaseActivity;
 import com.othershe.mdview.bases.BaseFragment;
 import com.othershe.mdview.util.Logger;

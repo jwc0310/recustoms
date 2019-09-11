@@ -15,5 +15,4 @@ public class EnhanceContact {
         void initData();
     }
 
-
 }
