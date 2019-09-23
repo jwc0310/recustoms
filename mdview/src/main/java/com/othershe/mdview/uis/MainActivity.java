@@ -26,7 +26,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.othershe.mdview.R;
-import com.othershe.mdview.awpms.Ams;
 import com.othershe.mdview.bases.BaseActivity;
 import com.othershe.mdview.bases.BaseFragment;
 import com.othershe.mdview.util.Logger;
@@ -66,13 +65,12 @@ public class MainActivity extends BaseActivity {
         mTitles.add("军事");
         mTitles.add("科技");
         mTitles.add("娱乐");
-        mTitles.add("其他2111111");
-        mTitles.add("其他3222");
-        mTitles.add("其他4333");
-        mTitles.add("其他54444444444");
-        mTitles.add("其他6111");
+        mTitles.add("其他2");
+        mTitles.add("其他3");
+        mTitles.add("其他5");
+        mTitles.add("其他6");
         mTitles.add("其他7");
-        mTitles.add("其他822222");
+        mTitles.add("其他8");
         mTitles.add("其他9");
         mTitles.add("其他10");
         mTitles.add("其他11");
@@ -83,7 +81,6 @@ public class MainActivity extends BaseActivity {
         mTitles.add("其他16");
         mTitles.add("其他17");
         mTitles.add("其他18");
-        mTitles.add("其他19");
     }
 
     @Override
@@ -143,13 +140,22 @@ public class MainActivity extends BaseActivity {
             }
         }
 
-        mTitles.add(4, "weixin");
+        mTitles.add(4, "微信");
         mFragments.add(4, new WxFragment());
 
-        mTitles.add(5, "EnhanceTabLayout");
-        mFragments.add(5, new EnhanceTabLayoutFragment());
+        mTitles.add(5, "ViewPager");
+        mFragments.add(5, new ViewPagerFragment());
 
-        mTitles.add("custom");
+        mTitles.add(6, "viewPager2");
+        mFragments.add(6, new ViewPager2Fragment());
+
+        mTitles.add(7, "viewPager3");
+        mFragments.add(7, new ViewPager3Fragment());
+
+        mTitles.add(8, "EnhanceTabLayout");
+        mFragments.add(8, new EnhanceTabLayoutFragment());
+
+        mTitles.add("定制加载动画");
         mFragments.add(new CustomFragment());
 
         TabPagerAdapter adapter = new TabPagerAdapter(getSupportFragmentManager());
@@ -189,6 +195,7 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+        //设置固定宽度 indicator
         TabLayoutUtil.setTabWidth(mTabLayout, 20);
 
         mFab.setOnClickListener(new View.OnClickListener() {

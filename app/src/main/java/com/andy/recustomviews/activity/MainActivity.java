@@ -301,6 +301,10 @@ public class MainActivity extends BaseActivity {
 
     }
     private void addShortcut(Intent data){
+
+        if (data == null)
+            return;
+
         Resources res = getResources();
 
         final String appName = res.getString(R.string.group_application);

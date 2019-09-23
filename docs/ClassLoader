@@ -1,0 +1,27 @@
+双亲委托机制
+
+        自定义类加载器首先从缓存中要查找Class文件是否已经加载，如果已经加载就返回该Class，
+    如果没加载则委托给父加载器也就是App ClassLoader。
+
+        一直委托到Bootstrap ClassLoader，如果Bootstrap ClassLoader在缓存中还没有查找到Class文件，
+    则在自己的规定路径$JAVA_HOME/jre/libr中或者-Xbootclasspath选项指定路径的jar包中进行查找，如果找到则返回该Class，
+    如果没有则交给子加载器Extensions ClassLoader。
+
+        Extensions ClassLoader查找$JAVA_HOME/jre/lib/ext目录下或者-Djava.ext.dirs选项指定目录下的jar包，
+    如果找到就返回，找不到则交给App ClassLoader。
+
+        App ClassLoade查找Classpath目录下或者-Djava.class.path选项所指定的目录下的jar包和Class文件，
+    如果找到就返回，找不到交给我们自定义的类加载器，如果还找不到则抛出异常。
+
+
+优点：
+    采取双亲委托模式主要有两点好处：
+
+        避免重复加载，如果已经加载过一次Class，就不需要再次加载，而是先从缓存中直接读取。
+
+        更加安全，如果不使用双亲委托模式，就可以自定义一个String类来替代系统的String类，这显然会造成安全隐患，
+    采用双亲委托模式会使得系统的String类在Java虚拟机启动时就被加载，也就无法自定义String类来替代系统的String类，
+    除非我们修改类加载器搜索类的默认算法。
+
+        还有一点，只有两个类名一致并且被同一个类加载器加载的类，Java虚拟机才会认为它们是同一个类，
+    想要骗过Java虚拟机显然不会那么容易。

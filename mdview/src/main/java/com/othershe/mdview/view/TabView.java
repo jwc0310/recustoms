@@ -2,6 +2,7 @@ package com.othershe.mdview.view;
 
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -73,7 +74,9 @@ public class TabView extends FrameLayout {
 
         // 设置轮廓图片，不透明，默认着色
         mNormalImageView = findViewById(R.id.tab_image);
-        mNormalDrawable.setTint(DEFAULT_TAB_COLOR);
+        if (Build.VERSION.SDK_INT > 20) {
+            mNormalDrawable.setTint(DEFAULT_TAB_COLOR);
+        }
         mNormalDrawable.setAlpha(255);
         mNormalImageView.setImageDrawable(mNormalDrawable);
 
