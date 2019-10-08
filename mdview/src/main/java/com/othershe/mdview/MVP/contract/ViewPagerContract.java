@@ -1,5 +1,6 @@
 package com.othershe.mdview.MVP.contract;
 
+import com.othershe.mdview.bases.IBasePresenter;
 import com.othershe.mdview.bases.IBaseView;
 
 public class ViewPagerContract {
@@ -8,7 +9,7 @@ public class ViewPagerContract {
         void onSuccess();
     }
 
-    public interface Presenter {
+    public interface Presenter extends IBasePresenter<View> {
         void initData();
     }
 

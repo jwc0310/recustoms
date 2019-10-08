@@ -63,8 +63,7 @@ public class XYFlowLayout extends ViewGroup{
 		int cCount = getChildCount();
 
 		// 遍历每个子元素
-		for (int i = 0; i < cCount; i++)
-		{
+		for (int i = 0; i < cCount; i++) {
 			View child = getChildAt(i);
 			// 测量每一个child的宽和高
 			measureChild(child, widthMeasureSpec, heightMeasureSpec);
@@ -88,15 +87,13 @@ public class XYFlowLayout extends ViewGroup{
 				height += lineHeight;
 				// 开启记录下一行的高度
 				lineHeight = childHeight;
-			} else
-			// 否则累加值lineWidth,lineHeight取最大高度
-			{
+			} else {
+				// 否则累加值lineWidth,lineHeight取最大高度
 				lineWidth += childWidth;
 				lineHeight = Math.max(lineHeight, childHeight);
 			}
 			// 如果是最后一个，则将当前记录的最大宽度和当前lineWidth做比较
-			if (i == cCount - 1)
-			{
+			if (i == cCount - 1) {
 				width = Math.max(width, lineWidth);
 				height += lineHeight;
 			}
@@ -115,9 +112,9 @@ public class XYFlowLayout extends ViewGroup{
 	 * 记录每一行的最大高度
 	 */
 	private List<Integer> mLineHeight = new ArrayList<Integer>();
+
 	@Override
-	protected void onLayout(boolean changed, int l, int t, int r, int b)
-	{
+	protected void onLayout(boolean changed, int l, int t, int r, int b) {
 		mAllViews.clear();
 		mLineHeight.clear();
 
@@ -129,8 +126,7 @@ public class XYFlowLayout extends ViewGroup{
 		List<View> lineViews = new ArrayList<View>();
 		int cCount = getChildCount();
 		// 遍历所有的孩子
-		for (int i = 0; i < cCount; i++)
-		{
+		for (int i = 0; i < cCount; i++) {
 			View child = getChildAt(i);
 			MarginLayoutParams lp = (MarginLayoutParams) child
 					.getLayoutParams();
@@ -138,8 +134,7 @@ public class XYFlowLayout extends ViewGroup{
 			int childHeight = child.getMeasuredHeight();
 
 			// 如果已经需要换行
-			if (childWidth + lp.leftMargin + lp.rightMargin + lineWidth > width)
-			{
+			if (childWidth + lp.leftMargin + lp.rightMargin + lineWidth > width) {
 				// 记录这一行所有的View以及最大高度
 				mLineHeight.add(lineHeight);
 				// 将当前行的childView保存，然后开启新的ArrayList保存下一行的childView
@@ -163,8 +158,7 @@ public class XYFlowLayout extends ViewGroup{
 		int top = 0;
 		// 得到总行数
 		int lineNums = mAllViews.size();
-		for (int i = 0; i < lineNums; i++)
-		{
+		for (int i = 0; i < lineNums; i++) {
 			// 每一行的所有的views
 			lineViews = mAllViews.get(i);
 			// 当前行的最大高度
@@ -174,8 +168,7 @@ public class XYFlowLayout extends ViewGroup{
 //			Log.e(TAG, "第" + i + "行， ：" + lineHeight);
 
 			// 遍历当前行所有的View
-			for (int j = 0; j < lineViews.size(); j++)
-			{
+			for (int j = 0; j < lineViews.size(); j++) {
 				View child = lineViews.get(j);
 				if (child.getVisibility() == View.GONE)
 				{
@@ -190,8 +183,8 @@ public class XYFlowLayout extends ViewGroup{
 				int rc =lc + child.getMeasuredWidth();
 				int bc = tc + child.getMeasuredHeight();
 
-				Log.e(TAG, child + " , l = " + lc + " , t = " + t + " , r ="
-						+ rc + " , b = " + bc);
+//				Log.e(TAG, child + " , l = " + lc + " , t = " + t + " , r ="
+//						+ rc + " , b = " + bc);
 
 				child.layout(lc, tc, rc, bc);
 				

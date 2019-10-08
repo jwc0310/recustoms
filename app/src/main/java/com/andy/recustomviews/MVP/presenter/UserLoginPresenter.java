@@ -6,7 +6,7 @@ import com.andy.recustomviews.MVP.bean.LoginUser;
 import com.andy.recustomviews.MVP.module.IModuleUserLogin;
 import com.andy.recustomviews.MVP.module.ModuleUserLoginImpl;
 import com.andy.recustomviews.MVP.module.OnLoginListener;
-import com.andy.recustomviews.MVP.view.IBaseView;
+import com.andy.recustomviews.MVP.view.IUserLoginView;
 
 /**
  * Created by Administrator on 2017/6/8.
@@ -14,10 +14,10 @@ import com.andy.recustomviews.MVP.view.IBaseView;
 public class UserLoginPresenter {
 
     private IModuleUserLogin userLoginModuel;
-    private IBaseView.IUserLoginView userLoginView;
+    private IUserLoginView userLoginView;
     private Handler mHandler = new Handler();
 
-    public UserLoginPresenter(IBaseView.IUserLoginView userLoginView) {
+    public UserLoginPresenter(IUserLoginView userLoginView) {
         this.userLoginView = userLoginView;
         userLoginModuel = new ModuleUserLoginImpl();
     }

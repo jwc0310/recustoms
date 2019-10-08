@@ -54,6 +54,7 @@
         <activity android:name=".activity.HorActivity" />
         <activity android:name=".activity.BroswerActivity" />
         <activity android:name=".activity.DrawPoint" />
+        <activity android:name=".activity.Rxjava23Activity" />
 
         <service android:name=".service.DownloadService" />
         <service android:name=".service.LocalService" />

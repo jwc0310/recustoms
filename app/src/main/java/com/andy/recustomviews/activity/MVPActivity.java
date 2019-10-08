@@ -9,13 +9,13 @@ import android.widget.Toast;
 
 import com.andy.recustomviews.MVP.bean.LoginUser;
 import com.andy.recustomviews.MVP.presenter.UserLoginPresenter;
-import com.andy.recustomviews.MVP.view.IBaseView;
+import com.andy.recustomviews.MVP.view.IUserLoginView;
 import com.andy.recustomviews.R;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MVPActivity extends Base2Activity implements IBaseView.IUserLoginView {
+public class MVPActivity extends Base2Activity implements IUserLoginView {
 
     @BindView(R.id.id_et_username)
     EditText idEtUsername;
@@ -96,5 +96,10 @@ public class MVPActivity extends Base2Activity implements IBaseView.IUserLoginVi
         if (idPbLoading.getVisibility() != View.GONE){
             idPbLoading.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void onError(Throwable throwable) {
+
     }
 }

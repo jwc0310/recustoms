@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity {
             "MVC", "OpenGL", "gldemo", "点9", "proj-1",
             "proj-2", "壁纸", "EventBus", "View", "fileChoose",
             "MVP", "Canvas", "vertical", "Drawer", "OpenGLLight",
-            "OpenGLTexture", "GLBitmapActivity"
+            "OpenGLTexture", "GLBitmapActivity", "Rxjava23"
     };
 
     private String[] packages = new String[] {
@@ -56,7 +56,7 @@ public class MainActivity extends BaseActivity {
             "MVCActivity", "OpenGLESActivity", "DrawPoint", "Point9Test", "MainActivity_proj1",
             "GreenDaoTest", "SetWrapperActivity", "EventBusFirstActivity", "ViewActivity", "FileChooserExampleActivity",
             "MVPActivity", "CanvasActivity", "VerticalActivity", "Drawer", "OpenGLLight",
-            "OpenGLTexture", "GLBitmapActivity"
+            "OpenGLTexture", "GLBitmapActivity", "Rxjava23Activity"
     };
 
     private List<String> list;

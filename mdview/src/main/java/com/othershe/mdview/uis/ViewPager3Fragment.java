@@ -15,7 +15,10 @@ import com.othershe.mdview.MVP.presenter.ViewPagerPresenter;
 import com.othershe.mdview.R;
 import com.othershe.mdview.bases.MVPBaseFragment;
 import com.othershe.mdview.util.Logger;
+import com.othershe.mdview.view.transformers.DepthPageTransformer;
+import com.othershe.mdview.view.transformers.FlipPageTransformer;
 import com.othershe.mdview.view.transformers.ScaleTransformer;
+import com.othershe.mdview.view.transformers.ZoomOutPageTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +54,10 @@ public class ViewPager3Fragment extends MVPBaseFragment<ViewPagerPresenter> impl
 
         MyVpAdater adater = new MyVpAdater(getActivity(), colors);
         viewPagerViewPager.setAdapter(adater);
-        viewPagerViewPager.setPageTransformer(false, new ScaleTransformer());
+//        viewPagerViewPager.setPageTransformer(false, new ScaleTransformer());
+//        viewPagerViewPager.setPageTransformer(false, new DepthPageTransformer());
+//        viewPagerViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+        viewPagerViewPager.setPageTransformer(true, new FlipPageTransformer());
     }
 
     @Override

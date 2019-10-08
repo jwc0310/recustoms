@@ -16,3 +16,6 @@
 4, clipToPadding
     它表示是否允许ViewGroup在ViewGroup的padding中进行绘制，
     默认情况下该属性的值为true，即不允许在ViewGroup的padding中进行绘制
+
+
+5, 可以和CardView 一起使用 通过PagerTransformer 设置Z轴阴影 setCardElevation
