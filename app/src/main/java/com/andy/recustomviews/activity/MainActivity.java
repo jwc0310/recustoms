@@ -26,6 +26,7 @@ import com.andy.recustomviews.activity.eventbus.EventBusFirstActivity;
 import com.andy.recustomviews.proj_1.MainActivity_proj1;
 import com.andy.recustomviews.proj_2.GreenDaoTest;
 import com.andy.recustomviews.recycler.FullyGridLayoutManager;
+import com.andy.recustomviews.util.StatusBarCompat;
 import com.andy.recustomviews.views.XYFlowLayout;
 
 import java.util.ArrayList;
@@ -69,6 +70,9 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         context = this;
         setContentView(R.layout.activity_main);
+//        StatusBarCompat.transparent(this);
+
+
         list = Arrays.asList(content);
         list_packages = Arrays.asList(packages);
         initViews();

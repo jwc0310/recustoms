@@ -14,6 +14,7 @@ public class RxJavaContract {
 
     public interface Presenter extends IBasePresenter<View> {
         void click();
+        void unSubscribe();
     }
 
 }

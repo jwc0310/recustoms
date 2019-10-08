@@ -11,6 +11,7 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
@@ -149,57 +150,16 @@ public class Rxjava2Test {
     /**
      * Rxjava2 实现 短信倒计时
      */
-    public static void simulateSendSMS(final RxJavaContract.View view) {
+
+    public static void simulateSendSMS(final CompositeDisposable compositeDisposable, final RxJavaContract.View view) {
         final long count = 60; //设置60秒倒计时
 
-        Observable.interval(0, 1, TimeUnit.SECONDS)
-                .take(count + 1)
-                .map(new Function<Long, Long>() {
-                    @Override
-                    public Long apply(Long integer) throws Exception {
-                        return count - integer;
-                    }
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(Disposable disposable) throws Exception {
-                        Log.e("Rxjava2", "set button enable false");
-                        Log.e("Rxjava2", "set button text color gray");
-                        view.setEnableFalse();
-                    }
-                })
-                .subscribe(new Observer<Long>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        Log.e("Rxjava2", "subscribe");
-                    }
-
-                    @Override
-                    public void onNext(Long integer) {
-                        Log.e("Rxjava2", integer + "秒后重发");
-                        view.updateButtonContent(integer);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e("Rxjava2", "onError");
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        Log.e("Rxjava2", "set button enable true");
-                        Log.e("Rxjava2", "set button text color red");
-                        Log.e("Rxjava2", "set button text 发送验证码");
-                        view.setEnableTrue();
-                    }
-                });
 
         Observer<Long> observer = new Observer<Long>() {
             @Override
             public void onSubscribe(Disposable d) {
                 Log.e("Rxjava2", "subscribe");
+                compositeDisposable.add(d);
             }
 
             @Override
@@ -221,7 +181,28 @@ public class Rxjava2Test {
                 Log.e("Rxjava2", "set button text 发送验证码");
                 view.setEnableTrue();
             }
-        }
+        };
+
+        Observable.interval(0, 1, TimeUnit.SECONDS)
+                .take(count + 1)
+                .map(new Function<Long, Long>() {
+                    @Override
+                    public Long apply(Long integer) throws Exception {
+                        return count - integer;
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(new Consumer<Disposable>() {
+                    @Override
+                    public void accept(Disposable disposable) throws Exception {
+                        Log.e("Rxjava2", "set button enable false");
+                        Log.e("Rxjava2", "set button text color gray");
+                        view.setEnableFalse();
+                    }
+                })
+                .subscribe(observer);
+
+
     }
 
 }
