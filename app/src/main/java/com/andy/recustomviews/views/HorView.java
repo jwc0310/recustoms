@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.andy.recustomviews.R;
 
@@ -39,14 +40,18 @@ public class HorView extends LinearLayout {
     private void initView(){
         viewList = new ArrayList<>();
         for (int i = 0; i < 5; i++){
-            View tmpView = inflater.inflate(R.layout.hori_item, this);
+            View tmpView = inflater.inflate(R.layout.hori_item, null);
             viewList.add(tmpView);
+            TextView tv = tmpView.findViewById(R.id.tv_name);
+            tv.setText("中中 - " + i);
             tmpView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    remove();
+                    remove(position);
                 }
             });
+
+            addView(tmpView);
         }
     }
 
@@ -59,8 +64,8 @@ public class HorView extends LinearLayout {
         return viewList.get(position);
     }
 
-    private synchronized void remove(){
-        this.removeViewAt(position);
+    private synchronized void remove(int position) {
+        removeViewAt(position);
         viewList.remove(position);
     }
 }

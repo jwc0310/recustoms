@@ -2,6 +2,8 @@ package com.andy.recustomviews.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
@@ -11,6 +13,8 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -18,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -58,6 +63,15 @@ public class MainActivity extends BaseActivity {
             "GreenDaoTest", "SetWrapperActivity", "EventBusFirstActivity", "ViewActivity", "FileChooserExampleActivity",
             "MVPActivity", "CanvasActivity", "VerticalActivity", "Drawer", "OpenGLLight",
             "OpenGLTexture", "GLBitmapActivity", "Rxjava23Activity"
+    };
+
+    private Class[] classes = new Class[] {
+            HorActivity.class, MoveActivity.class, QqActivity.class, ScrollViewActivity.class, ActionModeActivity.class,
+            OkhttpActivity.class, ServiceActivity.class, ProviderActivity.class, BroswerActivity.class,
+            MVCActivity.class, OpenGLESActivity.class, DrawPoint.class, Point9Test.class, MainActivity_proj1.class,
+            GreenDaoTest.class, SetWrapperActivity.class, EventBusFirstActivity.class, ViewActivity.class, FileChooserExampleActivity.class,
+            MVPActivity.class, CanvasActivity.class, VerticalActivity.class, Drawer.class, OpenGLLight.class,
+            OpenGLTexture.class, GLBitmapActivity.class, Rxjava23Activity.class
     };
 
     private List<String> list;
@@ -123,23 +137,25 @@ public class MainActivity extends BaseActivity {
             textView1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    try {
-                        if (textView1.getText().toString().trim().contains("proj-1")){
-                            startActivity(new Intent(context, MainActivity_proj1.class));
-                            return;
-                        }
-                        if (textView1.getText().toString().trim().contains("proj-2")){
-                            startActivity(new Intent(context, GreenDaoTest.class));
-                            return;
-                        }
-                        if (textView1.getText().toString().trim().contains("EventBus")){
-                            startActivity(new Intent(context, EventBusFirstActivity.class));
-                            return;
-                        }
-                        startActivity(new Intent(context, Class.forName("com.andy.recustomviews.activity."+list_packages.get(position))));
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
-                    }
+                    startActivity(new Intent(context, classes[position]));
+//                    try {
+//
+//                        if (textView1.getText().toString().trim().contains("proj-1")){
+//                            startActivity(new Intent(context, MainActivity_proj1.class));
+//                            return;
+//                        }
+//                        if (textView1.getText().toString().trim().contains("proj-2")){
+//                            startActivity(new Intent(context, GreenDaoTest.class));
+//                            return;
+//                        }
+//                        if (textView1.getText().toString().trim().contains("EventBus")){
+//                            startActivity(new Intent(context, EventBusFirstActivity.class));
+//                            return;
+//                        }
+//                        startActivity(new Intent(context, Class.forName("com.andy.recustomviews.activity."+list_packages.get(position))));
+//                    } catch (ClassNotFoundException e) {
+//                        e.printStackTrace();
+//                    }
                 }
             });
         }
@@ -156,7 +172,24 @@ public class MainActivity extends BaseActivity {
         adapter = new Adapter(context, list, list_packages);
         recyclerView.setAdapter(adapter);
 
-        findViewById(R.id.edit_text);
+        final EditText editText = findViewById(R.id.edit_text);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Log.e("editext", "before = " + s.toString() +", " + start+", " + count+", " + after);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.e("editext", "on = " + s.toString() +", " + start+", " + count+", " + count);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.e("editext", "after = " + s.toString());
+
+            }
+        });
 
         findViewById(R.id.launcher3).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -189,6 +222,35 @@ public class MainActivity extends BaseActivity {
                 showWifiInfo();
             }
         });
+
+        findViewById(R.id.app_debug).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String pkgName = editText.getText().toString().trim();
+                if (pkgName.length() <= 0) {
+                    return;
+                }
+
+                showAppDebug(pkgName);
+            }
+        });
+    }
+
+    private void showAppDebug(String packageName) {
+        PackageManager pm = getPackageManager();
+
+        try {
+            PackageInfo pkgInfo = pm.getPackageInfo(packageName, 1);
+            if (pkgInfo != null) {
+                ApplicationInfo info = pkgInfo.applicationInfo;
+                boolean isDebuggable = ((info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0);
+                TextView textView = findViewById(R.id.main_context);
+                textView.setText(packageName + (isDebuggable ? " is debuggable" : "not debuggable"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void showWifiInfo() {

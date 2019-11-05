@@ -21,6 +21,7 @@ public class DragActivity extends Activity {
 
         if(getIntent().getBooleanExtra("horizontal", false)) {
             dragLayout.setDragHorizontal(true);
+            dragLayout.setDragVertical(true);
         }
         if(getIntent().getBooleanExtra("vertical", false)) {
             dragLayout.setDragVertical(true);

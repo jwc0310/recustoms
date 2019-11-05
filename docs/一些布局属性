@@ -2,7 +2,6 @@
     clipChildren属性表示是否限制子控件在该容器所在的范围内，
     clipChildren属性配合layout_gravity属性，可以用来设置多余部分的显示位置
 
-
 2, ViewPager
     配合clipChildren 和 setPageMargin 实现 多个item在一页
 

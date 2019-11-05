@@ -40,6 +40,27 @@ public class te {
 
         }
 
+
+        String version = "Linux version 3.10.0-tencent (ychuang@ubuntu) (gcc version 4.8.4 (Ubuntu 4.8.4-2 ubuntu1~14.04) ) #125 SMP PREEMPT Thu Sep 22 15:50:14 CST 2016";
+        char[] chars = version.toCharArray();
+        StringBuffer buffer = new StringBuffer();
+        for (int cursor = 0; cursor <chars.length; cursor++) {
+            char chr = chars[cursor];
+            String hexValue = Integer.toHexString(chr);
+            //System.out.println(chr + ": 0x"+hexValue);
+
+            if (cursor % 4 == 0) {
+                buffer.setLength(0);
+            }
+
+            buffer.insert(0, hexValue);
+
+            if (cursor % 4 == 3) {
+                buffer.insert(0, "0x");
+                System.out.println(buffer.toString());
+            }
+        }
+
     }
 
     private static boolean isEmpty(String string){

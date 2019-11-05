@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class XYFlowLayout extends ViewGroup{
+public class XYFlowLayout extends ViewGroup {
 
 	private static final String TAG = "FlowLayout";
 
@@ -42,13 +42,14 @@ public class XYFlowLayout extends ViewGroup{
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 		// 获得它的父容器为它设置的测量模式和大小
 		int sizeWidth = MeasureSpec.getSize(widthMeasureSpec);
-		int sizeHeight = MeasureSpec.getSize(heightMeasureSpec);
 		int modeWidth = MeasureSpec.getMode(widthMeasureSpec);
+
+		int sizeHeight = MeasureSpec.getSize(heightMeasureSpec);
 		int modeHeight = MeasureSpec.getMode(heightMeasureSpec);
 
 //		Log.e(TAG, sizeWidth + "," + sizeHeight);
 
-		// 如果是warp_content情况下，记录宽和高
+		// 如果是wrap_content情况下，记录宽和高
 		int width = 0;
 		int height = 0;
 		/**
@@ -65,6 +66,10 @@ public class XYFlowLayout extends ViewGroup{
 		// 遍历每个子元素
 		for (int i = 0; i < cCount; i++) {
 			View child = getChildAt(i);
+
+			if (child.getVisibility() == View.GONE)
+				continue;
+
 			// 测量每一个child的宽和高
 			measureChild(child, widthMeasureSpec, heightMeasureSpec);
 			// 得到child的lp
@@ -79,8 +84,7 @@ public class XYFlowLayout extends ViewGroup{
 			/**
 			 * 如果加入当前child，则超出最大宽度，则的到目前最大宽度给width，类加height 然后开启新行
 			 */
-			if (lineWidth + childWidth > sizeWidth)
-			{
+			if (lineWidth + childWidth > sizeWidth) {
 				width = Math.max(lineWidth, childWidth);// 取最大的
 				lineWidth = childWidth; // 重新开启新行，开始记录
 				// 叠加当前高度，
@@ -164,14 +168,10 @@ public class XYFlowLayout extends ViewGroup{
 			// 当前行的最大高度
 			lineHeight = mLineHeight.get(i);
 
-//			Log.e(TAG, "第" + i + "行 ：" + lineViews.size() + " , " + lineViews);
-//			Log.e(TAG, "第" + i + "行， ：" + lineHeight);
-
 			// 遍历当前行所有的View
 			for (int j = 0; j < lineViews.size(); j++) {
 				View child = lineViews.get(j);
-				if (child.getVisibility() == View.GONE)
-				{
+				if (child.getVisibility() == View.GONE) {
 					continue;
 				}
 				MarginLayoutParams lp = (MarginLayoutParams) child
@@ -182,9 +182,6 @@ public class XYFlowLayout extends ViewGroup{
 				int tc = top + lp.topMargin;
 				int rc =lc + child.getMeasuredWidth();
 				int bc = tc + child.getMeasuredHeight();
-
-//				Log.e(TAG, child + " , l = " + lc + " , t = " + t + " , r ="
-//						+ rc + " , b = " + bc);
 
 				child.layout(lc, tc, rc, bc);
 				

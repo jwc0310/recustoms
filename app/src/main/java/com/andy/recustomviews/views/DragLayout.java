@@ -11,7 +11,9 @@ import android.widget.LinearLayout;
 import com.andy.recustomviews.R;
 
 /**
- * Created by Flavien Laurent (flavienlaurent.com) on 23/08/13.
+ * ViewDragHelper
+ * 可以实现回弹效果
+ * 侧滑关闭页面
  */
 public class DragLayout extends LinearLayout {
 
@@ -80,14 +82,21 @@ public class DragLayout extends LinearLayout {
             invalidate();
         }
 
+        int mLeft;
+        int mRight;
+
         @Override
         public void onViewCaptured(View capturedChild, int activePointerId) {
             super.onViewCaptured(capturedChild, activePointerId);
+            mLeft = capturedChild.getLeft();
+            mRight = capturedChild.getRight();
         }
 
         @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             super.onViewReleased(releasedChild, xvel, yvel);
+            mDragHelper.settleCapturedViewAt(mLeft, mRight);
+            invalidate();
         }
 
         @Override
@@ -131,12 +140,19 @@ public class DragLayout extends LinearLayout {
     }
 
     @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        final int action = MotionEventCompat.getActionMasked(ev);
-        if (action == MotionEvent.ACTION_CANCEL || action == MotionEvent.ACTION_UP) {
-            mDragHelper.cancel();
-            return false;
+    public void computeScroll() {
+        if (mDragHelper != null && mDragHelper.continueSettling(true)) {
+            invalidate();
         }
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+//        final int action = MotionEventCompat.getActionMasked(ev);
+//        if (action == MotionEvent.ACTION_CANCEL || action == MotionEvent.ACTION_UP) {
+//            mDragHelper.cancel();
+//            return false;
+//        }
         return mDragHelper.shouldInterceptTouchEvent(ev);
     }
 

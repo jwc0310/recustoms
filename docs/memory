@@ -19,7 +19,7 @@
 
    1.资源对象没有关闭引起的内存泄漏
 
-        如:广播BraodcastReceiver、EventBus、文件流File、数据库游标Cursor、图片资源Bitmap、动画等，
+        如:广播BroadcastReceiver、EventBus、文件流File、数据库游标Cursor、图片资源Bitmap、动画等，
             若在Activity销毁时没有调用相应的类似close（）、destroy（）、recycler（）、release（）
             等方法释放则这些资源将不会被回收，从而造成内存泄漏
 

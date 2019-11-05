@@ -5,6 +5,7 @@ import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,7 @@ public class YoutubeLayout extends ViewGroup {
         final int topBound = getPaddingTop();
         int y = (int) (topBound + slideOffset * mDragRange);
 
+		Log.e("YoutubeLayout", "padding top = " + topBound +"(" + mHeaderView.getLeft()+", " + y+")");
         if (mDragHelper.smoothSlideViewTo(mHeaderView, mHeaderView.getLeft(), y)) {
             ViewCompat.postInvalidateOnAnimation(this);
             return true;

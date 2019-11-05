@@ -32,7 +32,8 @@
         <EditText
             android:id="@+id/edit_text"
             android:layout_width="120dp"
-            android:layout_height="45dp" />
+            android:layout_height="45dp"
+            android:singleLine="false"/>
 
         <Button
             android:id="@+id/launcher3"
@@ -58,7 +59,22 @@
             android:layout_height="45dp"
             android:text="桥接"/>
 
+
+        <Button
+            android:id="@+id/app_debug"
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:text="status"/>
+
+        <TextView
+            android:id="@+id/main_context"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
         <com.andy.recustomviews.views.MyGLView
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
