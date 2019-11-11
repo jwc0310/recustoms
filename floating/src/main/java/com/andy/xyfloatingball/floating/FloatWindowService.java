@@ -40,7 +40,7 @@ public class FloatWindowService extends Service {
 			timer.schedule(new RefreshTask(), 0, 500);
 		}
 		initData();
-		initWeather();
+//		initWeather();
 		return super.onStartCommand(intent, flags, startId);
 	}
 

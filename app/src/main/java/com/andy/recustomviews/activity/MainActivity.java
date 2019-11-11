@@ -1,5 +1,7 @@
 package com.andy.recustomviews.activity;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -7,17 +9,21 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
+import android.media.projection.MediaProjectionManager;
 import android.net.Uri;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
+import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -31,6 +37,8 @@ import com.andy.recustomviews.activity.eventbus.EventBusFirstActivity;
 import com.andy.recustomviews.proj_1.MainActivity_proj1;
 import com.andy.recustomviews.proj_2.GreenDaoTest;
 import com.andy.recustomviews.recycler.FullyGridLayoutManager;
+import com.andy.recustomviews.service.ShotterService;
+import com.andy.recustomviews.tools.Shotter;
 import com.andy.recustomviews.util.StatusBarCompat;
 import com.andy.recustomviews.views.XYFlowLayout;
 
@@ -53,7 +61,7 @@ public class MainActivity extends BaseActivity {
             "MVC", "OpenGL", "gldemo", "点9", "proj-1",
             "proj-2", "壁纸", "EventBus", "View", "fileChoose",
             "MVP", "Canvas", "vertical", "Drawer", "OpenGLLight",
-            "OpenGLTexture", "GLBitmapActivity", "Rxjava23"
+            "OpenGLTexture", "GLBitmapActivity", "Rxjava23", "自定义ViewGroup"
     };
 
     private String[] packages = new String[] {
@@ -71,7 +79,7 @@ public class MainActivity extends BaseActivity {
             MVCActivity.class, OpenGLESActivity.class, DrawPoint.class, Point9Test.class, MainActivity_proj1.class,
             GreenDaoTest.class, SetWrapperActivity.class, EventBusFirstActivity.class, ViewActivity.class, FileChooserExampleActivity.class,
             MVPActivity.class, CanvasActivity.class, VerticalActivity.class, Drawer.class, OpenGLLight.class,
-            OpenGLTexture.class, GLBitmapActivity.class, Rxjava23Activity.class
+            OpenGLTexture.class, GLBitmapActivity.class, Rxjava23Activity.class, MyViewGroup.class
     };
 
     private List<String> list;
@@ -223,6 +231,20 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+        findViewById(R.id.app_screencap).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestScreenShot();
+            }
+        });
+
+        findViewById(R.id.app_screencap2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Shotter.screenShot();
+            }
+        });
+
         findViewById(R.id.app_debug).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -234,6 +256,19 @@ public class MainActivity extends BaseActivity {
                 showAppDebug(pkgName);
             }
         });
+    }
+
+    public static final int REQUEST_MEDIA_PROJECTION = 0x2893;
+
+    @SuppressLint("NewApi")
+    public void requestScreenShot() {
+        if (Build.VERSION.SDK_INT >= 21) {
+            startActivityForResult(
+                    ((MediaProjectionManager) getSystemService("media_projection")).createScreenCaptureIntent(),
+                    REQUEST_MEDIA_PROJECTION);
+        } else {
+            finish();
+        }
     }
 
     private void showAppDebug(String packageName) {
@@ -395,6 +430,23 @@ public class MainActivity extends BaseActivity {
         if (requestCode == 0x0){
             addShortcut(data);
             return;
+        }
+        switch (requestCode) {
+            case REQUEST_MEDIA_PROJECTION: {
+                if (resultCode == -1 && data != null) {
+                    MediaProjectionManager mediaProjectionManager = (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
+                    Shotter.mMediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, data);
+
+                    Handler handler = new Handler(getMainLooper());
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(MainActivity.this, ShotterService.class);
+                            startService(intent);
+                        }
+                    }, 2000);
+                }
+            }
         }
     }
 

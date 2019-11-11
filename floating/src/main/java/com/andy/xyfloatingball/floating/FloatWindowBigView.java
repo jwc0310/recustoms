@@ -204,8 +204,8 @@ public class FloatWindowBigView extends LinearLayout implements View.OnClickList
 		xyf_location.setTextSize(12 * px.densityDpi / 192);
 		xyf_temp.setTextSize(12 * px.densityDpi / 192);
 		xyf_air.setTextSize(10 * px.densityDpi / 192);
-		initLocation();
-		initWeather();
+		//initLocation();
+		//initWeather();
 
 		/** middle 中间 **/
 		xyf_hot_apps = (RelativeLayout) findViewById(R.id.xyf_hot_apps);

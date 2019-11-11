@@ -50,4 +50,8 @@ dependencies {
     //glide 高斯模糊
     implementation 'jp.wasabeef:glide-transformations:4.0.1'
 
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
 }
