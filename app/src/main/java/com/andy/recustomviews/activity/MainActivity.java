@@ -23,7 +23,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
-import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -37,9 +36,9 @@ import com.andy.recustomviews.activity.eventbus.EventBusFirstActivity;
 import com.andy.recustomviews.proj_1.MainActivity_proj1;
 import com.andy.recustomviews.proj_2.GreenDaoTest;
 import com.andy.recustomviews.recycler.FullyGridLayoutManager;
+import com.andy.recustomviews.rxjava2.RxjavaActivity;
 import com.andy.recustomviews.service.ShotterService;
 import com.andy.recustomviews.tools.Shotter;
-import com.andy.recustomviews.util.StatusBarCompat;
 import com.andy.recustomviews.views.XYFlowLayout;
 
 import java.util.ArrayList;
@@ -61,7 +60,8 @@ public class MainActivity extends BaseActivity {
             "MVC", "OpenGL", "gldemo", "点9", "proj-1",
             "proj-2", "壁纸", "EventBus", "View", "fileChoose",
             "MVP", "Canvas", "vertical", "Drawer", "OpenGLLight",
-            "OpenGLTexture", "GLBitmapActivity", "Rxjava23", "自定义ViewGroup"
+            "OpenGLTexture", "GLBitmapActivity", "Rxjava23", "自定义ViewGroup", "Rxjava",
+            "摇一摇"
     };
 
     private String[] packages = new String[] {
@@ -79,7 +79,8 @@ public class MainActivity extends BaseActivity {
             MVCActivity.class, OpenGLESActivity.class, DrawPoint.class, Point9Test.class, MainActivity_proj1.class,
             GreenDaoTest.class, SetWrapperActivity.class, EventBusFirstActivity.class, ViewActivity.class, FileChooserExampleActivity.class,
             MVPActivity.class, CanvasActivity.class, VerticalActivity.class, Drawer.class, OpenGLLight.class,
-            OpenGLTexture.class, GLBitmapActivity.class, Rxjava23Activity.class, MyViewGroup.class
+            OpenGLTexture.class, GLBitmapActivity.class, Rxjava23Activity.class, MyViewGroup.class, RxjavaActivity.class,
+            Yaoyiyao.class
     };
 
     private List<String> list;
@@ -146,24 +147,6 @@ public class MainActivity extends BaseActivity {
                 @Override
                 public void onClick(View view) {
                     startActivity(new Intent(context, classes[position]));
-//                    try {
-//
-//                        if (textView1.getText().toString().trim().contains("proj-1")){
-//                            startActivity(new Intent(context, MainActivity_proj1.class));
-//                            return;
-//                        }
-//                        if (textView1.getText().toString().trim().contains("proj-2")){
-//                            startActivity(new Intent(context, GreenDaoTest.class));
-//                            return;
-//                        }
-//                        if (textView1.getText().toString().trim().contains("EventBus")){
-//                            startActivity(new Intent(context, EventBusFirstActivity.class));
-//                            return;
-//                        }
-//                        startActivity(new Intent(context, Class.forName("com.andy.recustomviews.activity."+list_packages.get(position))));
-//                    } catch (ClassNotFoundException e) {
-//                        e.printStackTrace();
-//                    }
                 }
             });
         }
