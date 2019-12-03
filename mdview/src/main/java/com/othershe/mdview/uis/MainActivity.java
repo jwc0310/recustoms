@@ -29,10 +29,13 @@ import com.othershe.mdview.R;
 import com.othershe.mdview.bases.BaseActivity;
 import com.othershe.mdview.bases.BaseFragment;
 import com.othershe.mdview.util.Logger;
+import com.othershe.mdview.util.MySharedPreference;
+import com.othershe.mdview.util.SaveInfo;
 import com.othershe.mdview.util.TabLayoutUtil;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -201,8 +204,7 @@ public class MainActivity extends BaseActivity {
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(mCoordinatorLayout, "点我分享哦！", Snackbar.LENGTH_SHORT).show();
-
+                Snackbar.make(mCoordinatorLayout, "点我分享哦！ ", Snackbar.LENGTH_SHORT).show();
             }
         });
     }
