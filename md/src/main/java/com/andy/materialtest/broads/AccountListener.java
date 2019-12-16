@@ -25,7 +25,6 @@ public class AccountListener extends BroadcastReceiver {
                     }
                 }
             }).start();
-
         }
     }
 }

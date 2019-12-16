@@ -326,4 +326,11 @@ public class MainActivity extends BaseActivity {
     public void onDestroy() {
         super.onDestroy();
     }
+
+
+    /**
+     * 以下为google play登陆相关
+     */
+
+
 }
