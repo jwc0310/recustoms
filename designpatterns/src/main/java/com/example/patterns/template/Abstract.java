@@ -1,21 +1,21 @@
 package com.example.patterns.template;
 
 /**
- * æ¨¡æ¿æ–¹æ³•æ¨¡å¼æ˜¯ç±»çš„è¡Œä¸ºæ¨¡å¼
+ * Ä£°å·½·¨Ä£Ê½ÊÇÀàµÄĞĞÎªÄ£Ê½
  * Created by Administrator on 2017/11/13.
  */
 
 public abstract class Abstract {
 
     /**
-     * å…¬å…±çš„æ–¹æ³•
+     * ¹«¹²µÄ·½·¨
      **/
     public final void print(String url) {
         System.out.println(setFormatUrl(url));
     }
 
     /**
-     * è‡ªå®šä¹‰æ–¹æ³•
+     * ×Ô¶¨Òå·½·¨
      **/
     protected abstract String setFormatUrl(String url);
 

@@ -1,12 +1,12 @@
 package com.example.structure.trees;
 
 /**
-    äºŒå‰æœç´¢æ ‘ï¼Œæ˜¯æŒ‡ä¸€æ£µç©ºæ ‘æˆ–è€…å…·æœ‰ä¸‹åˆ—æ€§è´¨çš„äºŒå‰æ ‘ï¼š
+    ¶ş²æËÑË÷Ê÷£¬ÊÇÖ¸Ò»¿Ã¿ÕÊ÷»òÕß¾ßÓĞÏÂÁĞĞÔÖÊµÄ¶ş²æÊ÷£º
 
-        è‹¥ä»»æ„èŠ‚ç‚¹çš„å·¦å­æ ‘ä¸ç©ºï¼Œåˆ™å·¦å­æ ‘ä¸Šæ‰€æœ‰èŠ‚ç‚¹çš„å€¼å‡å°äºå®ƒçš„æ ¹èŠ‚ç‚¹çš„å€¼ï¼›
-        è‹¥ä»»æ„èŠ‚ç‚¹çš„å³å­æ ‘ä¸ç©ºï¼Œåˆ™å³å­æ ‘ä¸Šæ‰€æœ‰èŠ‚ç‚¹çš„å€¼å‡å¤§äºå®ƒçš„æ ¹èŠ‚ç‚¹çš„å€¼ï¼›
-        ä»»æ„èŠ‚ç‚¹çš„å·¦ï¼Œå³å­æ ‘ä¹Ÿåˆ†åˆ«ä¸ºäºŒå‰æœç´¢æ ‘ï¼›
-        æ²¡æœ‰é”®å€¼ç›¸ç­‰çš„èŠ‚ç‚¹ã€‚
+        ÈôÈÎÒâ½ÚµãµÄ×ó×ÓÊ÷²»¿Õ£¬Ôò×ó×ÓÊ÷ÉÏËùÓĞ½ÚµãµÄÖµ¾ùĞ¡ÓÚËüµÄ¸ù½ÚµãµÄÖµ£»
+        ÈôÈÎÒâ½ÚµãµÄÓÒ×ÓÊ÷²»¿Õ£¬ÔòÓÒ×ÓÊ÷ÉÏËùÓĞ½ÚµãµÄÖµ¾ù´óÓÚËüµÄ¸ù½ÚµãµÄÖµ£»
+        ÈÎÒâ½ÚµãµÄ×ó£¬ÓÒ×ÓÊ÷Ò²·Ö±ğÎª¶ş²æËÑË÷Ê÷£»
+        Ã»ÓĞ¼üÖµÏàµÈµÄ½Úµã¡£
  **/
 public class BinarySearchTree {
 
@@ -14,7 +14,7 @@ public class BinarySearchTree {
 
     public void insert(int key) {
 
-        BinaryNode node = new BinaryNode(key);  //å¾…æ’å…¥èŠ‚ç‚¹
+        BinaryNode node = new BinaryNode(key);  //´ı²åÈë½Úµã
 
         if (root == null) {
             root = node;
@@ -44,7 +44,7 @@ public class BinarySearchTree {
     }
 
 
-    //æŸ¥æ‰¾key
+    //²éÕÒkey
     public BinaryNode find(int key) {
         BinaryNode current = root;
 
@@ -71,16 +71,16 @@ public class BinarySearchTree {
     }
 
 
-    public BinaryNode delete(int key) {
+//    public BinaryNode delete(int key) {
+//
+//    }
 
-    }
 
 
-
-    /** æ ¹æ®å¤´ç»“ç‚¹è®¿é—®çš„å…ˆåé¡ºåº **/
+    /** ¸ù¾İÍ·½áµã·ÃÎÊµÄÏÈºóË³Ğò **/
     /**
-     * å…ˆåºéå†
-     * ä¸­å·¦å³
+     * ÏÈĞò±éÀú
+     * ÖĞ×óÓÒ
      */
     public void preOrderTraverse(BinaryNode root) {
         if (root == null)
@@ -92,8 +92,8 @@ public class BinarySearchTree {
     }
 
     /**
-     * ä¸­åºéå†
-     * å·¦ä¸­å³
+     * ÖĞĞò±éÀú
+     * ×óÖĞÓÒ
      */
     public void inOrderTraverse(BinaryNode root) {
         if (root == null)
@@ -106,8 +106,8 @@ public class BinarySearchTree {
 
 
     /**
-     * åç»­éå†
-     * å·¦å³ä¸­
+     * ºóĞø±éÀú
+     * ×óÓÒÖĞ
      */
     public void postOrderTraverse(BinaryNode root) {
         if (root == null)

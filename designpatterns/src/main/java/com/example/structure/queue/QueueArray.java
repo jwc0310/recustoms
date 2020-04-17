@@ -3,16 +3,16 @@ package com.example.structure.queue;
 
 /**
  *
- * é˜Ÿåˆ—ç‰¹å¾ï¼š å…ˆå…¥å…ˆå‡º
+ * ¶ÓÁĞÌØÕ÷£º ÏÈÈëÏÈ³ö
  *
  */
 
 public class QueueArray<T> {
 
-    private T[] datas;  //ä½¿ç”¨æ•°ç»„ä½œä¸ºé˜Ÿåˆ—å…ƒç´ å®¹å™¨
-    private int maxSize;  //é˜Ÿåˆ—å®¹é‡
-    private int front;    //å¤´æŒ‡é’ˆ
-    private int rear;     //å°¾æŒ‡é’ˆ
+    private T[] datas;  //Ê¹ÓÃÊı×é×÷Îª¶ÓÁĞÔªËØÈİÆ÷
+    private int maxSize;  //¶ÓÁĞÈİÁ¿
+    private int front;    //Í·Ö¸Õë
+    private int rear;     //Î²Ö¸Õë
 
     public int getMaxSize() {
         return maxSize;
@@ -39,13 +39,13 @@ public class QueueArray<T> {
     }
 
 
-    //åˆå§‹åŒ–æŒ‡é’ˆ
+    //³õÊ¼»¯Ö¸Õë
     public void initQueue() {
         this.front = 0;
         this.rear = 0;
     }
 
-    //é˜Ÿåˆ—åˆå§‹åŒ–
+    //¶ÓÁĞ³õÊ¼»¯
     @SuppressWarnings("unchecked")
     public QueueArray(int maxSize) {
         if (maxSize < 1)
@@ -58,7 +58,7 @@ public class QueueArray<T> {
     }
 
 
-    //é˜Ÿåˆ—çš„çŠ¶æ€: é˜Ÿæ»¡, é˜Ÿç©º
+    //¶ÓÁĞµÄ×´Ì¬: ¶ÓÂú, ¶Ó¿Õ
     public boolean isNull() {
         return this.front == this.rear;
     }
@@ -67,14 +67,14 @@ public class QueueArray<T> {
         return (rear + 1) % this.maxSize == front;
     }
 
-    //é˜Ÿåˆ—æ“ä½œï¼š è¿›é˜Ÿï¼Œå‡ºé˜Ÿ
+    //¶ÓÁĞ²Ù×÷£º ½ø¶Ó£¬³ö¶Ó
     public boolean push(T data) {
         if (isFull()) {
-            return false;  //é˜Ÿæ»¡ æ— æ³•è¿›å…¥
+            return false;  //¶ÓÂú ÎŞ·¨½øÈë
         }
 
         datas[rear] = data;
-        rear = (rear +  1) % maxSize;  //é˜Ÿå°¾æŒ‡é’ˆ+1
+        rear = (rear +  1) % maxSize;  //¶ÓÎ²Ö¸Õë+1
         return true;
     }
 

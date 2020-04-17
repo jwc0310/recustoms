@@ -1,7 +1,7 @@
 package com.example.patterns.template;
 
 /**
- * 模板方法模式是类的行为模式
+ * ģ�巽��ģʽ�������Ϊģʽ
  * Created by Administrator on 2017/11/13.
  */
 

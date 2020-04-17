@@ -2,18 +2,18 @@ package com.example.structure.stack;
 
 
 /**
- * ç‰¹æ€§ï¼š åè¿›å…ˆå‡º
+ * ÌØĞÔ£º ºó½øÏÈ³ö
  */
 public class StackArray {
 
 
-    //ä½¿ç”¨æ•°ç»„å®šä¹‰ä¸€ä¸ªå †æ ˆ
+    //Ê¹ÓÃÊı×é¶¨ÒåÒ»¸ö¶ÑÕ»
     private class Stack {
         private static final int size = 10;
         Object[] objs = new Object[size];
-        int index = 0; //ä¸‹æ ‡
+        int index = 0; //ÏÂ±ê
 
-        //å…¥æ ˆ
+        //ÈëÕ»
         public boolean push(Object obj) {
             if (index == size -1)
                 return false;
@@ -21,7 +21,7 @@ public class StackArray {
             objs[++index] = obj;
             return true;
         }
-        //å‡ºæ ˆ
+        //³öÕ»
         public Object pop() {
             if (index < 0)
                 return null;

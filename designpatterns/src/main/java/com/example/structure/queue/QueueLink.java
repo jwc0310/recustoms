@@ -13,11 +13,11 @@ public class QueueLink {
     }
 
 
-    //é˜Ÿå¤´    å¤´æŒ‡é’ˆ
+    //¶ÓÍ·    Í·Ö¸Õë
     private Node front;
-    //é˜Ÿå°¾    å°¾æŒ‡é’ˆ
+    //¶ÓÎ²    Î²Ö¸Õë
     private Node rear;
-    //é•¿åº¦    å®¹é‡
+    //³¤¶È    ÈİÁ¿
     private int size;
 
     public QueueLink() {

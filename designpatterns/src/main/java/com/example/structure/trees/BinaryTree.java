@@ -31,35 +31,35 @@ public class BinaryTree {
         }
 
         nodeList.clear();
-        //å°†ä¸€ä¸ªæ•°ç»„ä¸€æ¬¡è½¬æ¢ä¸ºNodeèŠ‚ç‚¹
+        //½«Ò»¸öÊı×éÒ»´Î×ª»»ÎªNode½Úµã
         for (int nodeIndex = 0; nodeIndex < array.length; nodeIndex ++) {
             nodeList.add(new BinaryNode(array[nodeIndex]));
         }
 
-        //å¯¹å‰lastParentIndex-1ä¸ªçˆ¶èŠ‚ç‚¹æŒ‰ç…§çˆ¶èŠ‚ç‚¹ä¸å­©å­èŠ‚ç‚¹çš„æ•°å­—å…³ç³»å»ºç«‹äºŒå‰æ ‘
+        //¶ÔÇ°lastParentIndex-1¸ö¸¸½Úµã°´ÕÕ¸¸½ÚµãÓëº¢×Ó½ÚµãµÄÊı×Ö¹ØÏµ½¨Á¢¶ş²æÊ÷
         for (int parentIndex = 0; parentIndex < array.length / 2 -1; parentIndex++) {
-            //å·¦å­©å­
+            //×óº¢×Ó
             nodeList.get(parentIndex).leftChild = nodeList.get(parentIndex * 2 + 1);
-            //å³å­©å­
+            //ÓÒº¢×Ó
             nodeList.get(parentIndex).rightChild = nodeList.get(parentIndex * 2 + 2);
         }
 
-        //æœ€åä¸€ä¸ªçˆ¶èŠ‚ç‚¹ï¼šå› ä¸ºæœ€åä¸€ä¸ªçˆ¶èŠ‚ç‚¹å¯èƒ½æ²¡æœ‰å³å­©å­ï¼Œæ‰€ä»¥å•ç‹¬æ‹¿å‡ºæ¥å¤„ç†
+        //×îºóÒ»¸ö¸¸½Úµã£ºÒòÎª×îºóÒ»¸ö¸¸½Úµã¿ÉÄÜÃ»ÓĞÓÒº¢×Ó£¬ËùÒÔµ¥¶ÀÄÃ³öÀ´´¦Àí
         int lastParentIndex = array.length / 2 - 1;
-        //å·¦å­©å­
+        //×óº¢×Ó
         nodeList.get(lastParentIndex).leftChild = nodeList.get(lastParentIndex * 2 + 1);
 
-        //å³å­©å­  å¦‚æœæ•°ç»„é•¿åº¦ä¸ºå¥‡æ•°æ‰å»ºç«‹å³å­©å­
+        //ÓÒº¢×Ó  Èç¹ûÊı×é³¤¶ÈÎªÆæÊı²Å½¨Á¢ÓÒº¢×Ó
         if (array.length % 2 == 1) {
             nodeList.get(lastParentIndex).rightChild = nodeList.get(lastParentIndex * 2 + 2);
         }
 
     }
 
-    /** æ ¹æ®å¤´ç»“ç‚¹è®¿é—®çš„å…ˆåé¡ºåº **/
+    /** ¸ù¾İÍ·½áµã·ÃÎÊµÄÏÈºóË³Ğò **/
     /**
-     * å…ˆåºéå†
-     * ä¸­å·¦å³
+     * ÏÈĞò±éÀú
+     * ÖĞ×óÓÒ
      */
     public void preOrderTraverse(BinaryNode node) {
         if (node == null)
@@ -71,8 +71,8 @@ public class BinaryTree {
     }
 
     /**
-     * ä¸­åºéå†
-     * å·¦ä¸­å³
+     * ÖĞĞò±éÀú
+     * ×óÖĞÓÒ
      */
     public void inOrderTraverse(BinaryNode node) {
         if (node == null)
@@ -85,8 +85,8 @@ public class BinaryTree {
 
 
     /**
-     * åç»­éå†
-     * å·¦å³ä¸­
+     * ºóĞø±éÀú
+     * ×óÓÒÖĞ
      */
     public void postOrderTraverse(BinaryNode node) {
         if (node == null)
