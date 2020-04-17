@@ -7,7 +7,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="signed_in_fmt">Signed in as: %s</string>
+    <string name="signed_out">Signed out</string>
 
-
+    <!-- Server Client ID.  This should be a valid Web OAuth 2.0 Client ID obtained
+             from https://console.developers.google.com/ -->
+    <string name="server_client_id">845399945254-ttngm9dr0kjv57aaflrnt2g0av8jj7af.apps.googleusercontent.com</string>
 
 </resources>

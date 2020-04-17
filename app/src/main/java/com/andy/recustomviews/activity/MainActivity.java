@@ -2,6 +2,7 @@ package com.andy.recustomviews.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -22,6 +23,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.InputDevice;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,7 @@ import android.widget.TextView;
 
 import com.andy.recustomviews.R;
 import com.andy.recustomviews.activity.eventbus.EventBusFirstActivity;
+import com.andy.recustomviews.activity.eventbus.GpsActivity;
 import com.andy.recustomviews.proj_1.MainActivity_proj1;
 import com.andy.recustomviews.proj_2.GreenDaoTest;
 import com.andy.recustomviews.recycler.FullyGridLayoutManager;
@@ -61,7 +64,7 @@ public class MainActivity extends BaseActivity {
             "proj-2", "壁纸", "EventBus", "View", "fileChoose",
             "MVP", "Canvas", "vertical", "Drawer", "OpenGLLight",
             "OpenGLTexture", "GLBitmapActivity", "Rxjava23", "自定义ViewGroup", "Rxjava",
-            "摇一摇"
+            "摇一摇", "Gps"
     };
 
     private String[] packages = new String[] {
@@ -80,7 +83,7 @@ public class MainActivity extends BaseActivity {
             GreenDaoTest.class, SetWrapperActivity.class, EventBusFirstActivity.class, ViewActivity.class, FileChooserExampleActivity.class,
             MVPActivity.class, CanvasActivity.class, VerticalActivity.class, Drawer.class, OpenGLLight.class,
             OpenGLTexture.class, GLBitmapActivity.class, Rxjava23Activity.class, MyViewGroup.class, RxjavaActivity.class,
-            Yaoyiyao.class
+            Yaoyiyao.class, GpsActivity.class
     };
 
     private List<String> list;
@@ -94,6 +97,21 @@ public class MainActivity extends BaseActivity {
         context = this;
         setContentView(R.layout.activity_main);
 //        StatusBarCompat.transparent(this);
+
+        int[] ids = InputDevice.getDeviceIds();
+
+        if (ids != null && ids.length > 0) {
+            for (int id : ids) {
+                InputDevice device = InputDevice.getDevice(id);
+                Log.e("cjw device", "name: " + device.getName());
+            }
+        }
+
+        Log.e("cjw device", "os: " + System.getProperty("os.version"));
+        Log.e("cjw device", "env: " + System.getenv().toString());
+        Log.e("cjw device", "property: " + System.getProperties().toString());
+        Log.e("cjw device", "Device: " + Build.DEVICE);
+
 
 
         list = Arrays.asList(content);
@@ -225,6 +243,17 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Shotter.screenShot();
+            }
+        });
+
+        findViewById(R.id.app_device).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DevicePolicyManager devicePolicyManager = (DevicePolicyManager)getSystemService(Context.DEVICE_POLICY_SERVICE);
+                int stat = devicePolicyManager.getStorageEncryptionStatus();
+
+                Log.e("cjw", "stat = " + stat);
+
             }
         });
 

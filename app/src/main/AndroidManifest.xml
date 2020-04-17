@@ -2,9 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.andy.recustomviews">
 
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_FRAME_BUFFER" /> <!-- use opengles 2.0 -->
@@ -26,7 +29,8 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.Yaoyiyao"></activity>
+        <activity android:name=".activity.eventbus.GpsActivity"></activity>
+        <activity android:name=".activity.Yaoyiyao" />
         <activity android:name=".rxjava2.RxjavaActivity" />
         <activity android:name=".activity.MyViewGroup" />
         <activity android:name=".activity.MainActivity">
@@ -69,6 +73,11 @@
         <receiver android:name=".receiver.MyBroadcastReceiver">
             <intent-filter>
                 <action android:name="com.andy.recustomviews.receiver.mybroadcastreceiver" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receiver.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 

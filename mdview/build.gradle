@@ -17,10 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
-        sourceSets{
+        sourceSets {
             main {
                 jni.srcDirs = []
-                jniLibs.srcDirs  'src/main/jni'
+                jniLibs.srcDirs 'src/main/jni'
             }
         }
     }
@@ -28,6 +28,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
     implementation "com.android.support:appcompat-v7:$supportV7"
     implementation 'com.android.support:design:28.0.0'
@@ -53,5 +54,8 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+    // Dependency for Google Sign-In  不要用17.0.0版本 会有androidx 冲突问题
+    implementation 'com.google.android.gms:play-services-auth:16.0.0'
 
 }

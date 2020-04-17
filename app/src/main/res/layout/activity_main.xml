@@ -78,6 +78,12 @@
             android:layout_height="45dp"
             android:text="截屏2"/>
 
+        <Button
+            android:id="@+id/app_device"
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:text="设备加密"/>
+
         <TextView
             android:id="@+id/main_context"
             android:layout_width="match_parent"

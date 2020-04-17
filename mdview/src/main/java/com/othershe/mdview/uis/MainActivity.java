@@ -1,7 +1,11 @@
 package com.othershe.mdview.uis;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.location.Criteria;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -28,6 +32,7 @@ import android.widget.TextView;
 import com.othershe.mdview.R;
 import com.othershe.mdview.bases.BaseActivity;
 import com.othershe.mdview.bases.BaseFragment;
+import com.othershe.mdview.uis.googlesignin.GoogleSignin;
 import com.othershe.mdview.util.Logger;
 import com.othershe.mdview.util.MySharedPreference;
 import com.othershe.mdview.util.SaveInfo;
@@ -257,6 +262,7 @@ public class MainActivity extends BaseActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_item1:
+                        startActivity(new Intent(MainActivity.this, GoogleSignin.class));
                         break;
                     case R.id.nav_item2:
                         break;
