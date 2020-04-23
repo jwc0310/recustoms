@@ -19,7 +19,6 @@ import static com.andy.recustomviews.util.Dimen.toPx;
 
 public class RxjavaActivity extends AppCompatActivity {
 
-
     HashMap<String, Method> hashMap = new HashMap<>();
 
     @Override

@@ -19,11 +19,8 @@ import com.andy.recustomviews.R;
 
 public class GpsActivity extends AppCompatActivity {
 
-
     private LocationManager lm;
     private TextView tv_show;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
