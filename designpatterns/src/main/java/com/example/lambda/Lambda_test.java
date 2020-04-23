@@ -5,12 +5,10 @@ public class Lambda_test {
     public static void main(String[] args) {
         Lambda_test test = new Lambda_test();
 
-        // å£°æ˜Žç±»åž‹
+        // ÉùÃ÷ÀàÐÍ
         MathOperation addition = (int a, int b) -> a + b;
-        // ä¸å£°æ˜Žç±»åž‹
+        // ²»ÉùÃ÷ÀàÐÍ
         MathOperation subtraction = (a, b) -> a - b;
-
-        //
 
         GreetingService greetingService = (String s) -> {
             System.out.println(s);
