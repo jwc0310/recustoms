@@ -3,7 +3,7 @@ package com.example.multithread;
 public class Multi {
 
     public static void main(String[] args) {
-        System.out.println(Thread.currentThread().getName());
+        System.out.println(Thread.currentThread().getName() + ", priority = " + Thread.currentThread().getPriority());
 
         MyThread_2 myThread_2 = new MyThread_2();
         Thread a = new Thread(myThread_2, "A");
@@ -26,7 +26,7 @@ class MyThread_2 extends Thread {
     @Override
     synchronized public void run() {
         count --;
-        System.out.println(Thread.currentThread().getName() + ", " + count);
+        System.out.println(Thread.currentThread().getName() + ", " + count + ", priority = " + this.getPriority());
     }
 }
 
@@ -41,7 +41,7 @@ class MyThread_1 extends Thread {
     public void run() {
         while (count > 0) {
             count --;
-            System.out.println(Thread.currentThread().getName() + " " + count);
+            System.out.println(Thread.currentThread().getName() + " " + count + ", priority = " + this.getPriority());
         }
     }
 }
