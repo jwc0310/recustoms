@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity {
             "proj-2", "壁纸", "EventBus", "View", "fileChoose",
             "MVP", "Canvas", "vertical", "Drawer", "OpenGLLight",
             "OpenGLTexture", "GLBitmapActivity", "Rxjava23", "自定义ViewGroup", "Rxjava",
-            "摇一摇", "Gps"
+            "摇一摇", "Gps", "Dashboard"
     };
 
     private String[] packages = new String[] {
@@ -73,7 +73,7 @@ public class MainActivity extends BaseActivity {
             "MVCActivity", "OpenGLESActivity", "DrawPoint", "Point9Test", "MainActivity_proj1",
             "GreenDaoTest", "SetWrapperActivity", "EventBusFirstActivity", "ViewActivity", "FileChooserExampleActivity",
             "MVPActivity", "CanvasActivity", "VerticalActivity", "Drawer", "OpenGLLight",
-            "OpenGLTexture", "GLBitmapActivity", "Rxjava23Activity"
+            "OpenGLTexture", "GLBitmapActivity", "Rxjava23Activity", "DashboardActivity"
     };
 
     private Class[] classes = new Class[] {
@@ -83,7 +83,7 @@ public class MainActivity extends BaseActivity {
             GreenDaoTest.class, SetWrapperActivity.class, EventBusFirstActivity.class, ViewActivity.class, FileChooserExampleActivity.class,
             MVPActivity.class, CanvasActivity.class, VerticalActivity.class, Drawer.class, OpenGLLight.class,
             OpenGLTexture.class, GLBitmapActivity.class, Rxjava23Activity.class, MyViewGroup.class, RxjavaActivity.class,
-            Yaoyiyao.class, GpsActivity.class
+            Yaoyiyao.class, GpsActivity.class, DashboardActivity.class
     };
 
     private List<String> list;
@@ -111,8 +111,6 @@ public class MainActivity extends BaseActivity {
         Log.e("cjw device", "env: " + System.getenv().toString());
         Log.e("cjw device", "property: " + System.getProperties().toString());
         Log.e("cjw device", "Device: " + Build.DEVICE);
-
-
 
         list = Arrays.asList(content);
         list_packages = Arrays.asList(packages);

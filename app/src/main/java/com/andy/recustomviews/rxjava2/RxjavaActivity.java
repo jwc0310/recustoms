@@ -25,18 +25,18 @@ public class RxjavaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rxjava);
-        initMethod();
+        //initMethod();
         XYFlowLayout flowLayout = findViewById(R.id.my_flowlayout);
         initFlowLayout(flowLayout);
     }
 
-    private void initMethod(){
-        try {
-            hashMap.put("retry", RxjavaActivity.class.getMethod("test_retry", null));
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void initMethod(){
+//        try {
+//            hashMap.put("retry", RxjavaActivity.class.getMethod("test_retry", null));
+//        } catch (NoSuchMethodException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public void test_retry() {
         Log.e("RxjavaActivity", "test_retry was called");
