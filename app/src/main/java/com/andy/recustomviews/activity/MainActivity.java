@@ -2,7 +2,9 @@ package com.andy.recustomviews.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -64,7 +66,7 @@ public class MainActivity extends BaseActivity {
             "proj-2", "壁纸", "EventBus", "View", "fileChoose",
             "MVP", "Canvas", "vertical", "Drawer", "OpenGLLight",
             "OpenGLTexture", "GLBitmapActivity", "Rxjava23", "自定义ViewGroup", "Rxjava",
-            "摇一摇", "Gps", "Dashboard"
+            "摇一摇", "Gps", "Dashboard", "Dashboard2"
     };
 
     private String[] packages = new String[] {
@@ -73,7 +75,7 @@ public class MainActivity extends BaseActivity {
             "MVCActivity", "OpenGLESActivity", "DrawPoint", "Point9Test", "MainActivity_proj1",
             "GreenDaoTest", "SetWrapperActivity", "EventBusFirstActivity", "ViewActivity", "FileChooserExampleActivity",
             "MVPActivity", "CanvasActivity", "VerticalActivity", "Drawer", "OpenGLLight",
-            "OpenGLTexture", "GLBitmapActivity", "Rxjava23Activity", "DashboardActivity"
+            "OpenGLTexture", "GLBitmapActivity", "Rxjava23Activity", "DashboardActivity", "Dashboard2Activity"
     };
 
     private Class[] classes = new Class[] {
@@ -83,7 +85,7 @@ public class MainActivity extends BaseActivity {
             GreenDaoTest.class, SetWrapperActivity.class, EventBusFirstActivity.class, ViewActivity.class, FileChooserExampleActivity.class,
             MVPActivity.class, CanvasActivity.class, VerticalActivity.class, Drawer.class, OpenGLLight.class,
             OpenGLTexture.class, GLBitmapActivity.class, Rxjava23Activity.class, MyViewGroup.class, RxjavaActivity.class,
-            Yaoyiyao.class, GpsActivity.class, DashboardActivity.class
+            Yaoyiyao.class, GpsActivity.class, DashboardActivity.class, Dashboard2Activity.class
     };
 
     private List<String> list;
@@ -134,6 +136,47 @@ public class MainActivity extends BaseActivity {
         if (uri.getHost().equals("play.google.com") && uri.getPath().equals("/store/apps/details")){
             Log.e("Andy", "xxxxxx");
         }
+        isEmulator(this);
+        getRunning(this);
+    }
+
+    private boolean getRunning(Context context) {
+        ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> runningAppProcesses = am.getRunningAppProcesses();
+        for (ActivityManager.RunningAppProcessInfo info : runningAppProcesses) {
+            Log.e("running", info.toString());
+        }
+
+        List<ActivityManager.AppTask> appTasks = am.getAppTasks();
+        for (ActivityManager.AppTask task : appTasks) {
+            Log.e("running", task.toString());
+        }
+
+        List<ActivityManager.RunningServiceInfo> runningServices = am.getRunningServices(100);
+        for (ActivityManager.RunningServiceInfo runningServiceInfo : runningServices) {
+            Log.e("running", runningServiceInfo.toString());
+            Log.e("running", runningServiceInfo.service.getPackageName());
+        }
+
+
+        return true;
+    }
+
+
+    private boolean isEmulator(Context context) {
+        String str = "tel:123456";
+        Intent intent = new Intent();
+        Uri uri = Uri.parse(str);
+        intent.setData(uri);
+        intent.setAction(Intent.ACTION_DIAL);
+        ComponentName dial = intent.resolveActivity(context.getPackageManager());
+        if (dial == null) {
+            Log.e("AndyDial", "dial == null");
+        } else {
+            Log.e("AndyDial", "dial != null");
+        }
+
+        return (dial == null);
     }
 
     private void fortest(){
