@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao'
+//apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -46,11 +46,11 @@ android {
         }
     }
 
-    greendao {
-        schemaVersion 1
-        daoPackage 'com.andy.recustomviews.proj_2.eg2'
-        targetGenDir 'src/main/java'
-    }
+//    greendao {
+//        schemaVersion 1
+//        daoPackage 'com.andy.recustomviews.proj_2.eg2'
+//        targetGenDir 'src/main/java'
+//    }
 
     productFlavors {
         xiaoyao {}
@@ -96,7 +96,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
 
-    implementation 'org.greenrobot:greendao:3.2.0'
+    //implementation 'org.greenrobot:greendao:3.2.2'
 
     implementation 'com.jakewharton:butterknife:8.4.0'
     implementation 'com.jakewharton.rxbinding:rxbinding:1.0.1'

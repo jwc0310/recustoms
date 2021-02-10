@@ -28,7 +28,7 @@ public class ClassLoaderTest {
 
 
     public static void main(String[] args) {
-        customClassloader();
+        // customClassloader();
         printClassLoaderFamilies();
 
     }
@@ -44,31 +44,31 @@ public class ClassLoaderTest {
      *
      */
 
-    private static void customClassloader() {
-
-
-        DiskClassLoader diskClassLoader = new DiskClassLoader("D:\\com\\example");//1
-        try {
-            Class c = diskClassLoader.loadClass("com.example.Jobs");//2
-            if (c != null) {
-                try {
-                    Object obj = c.newInstance();
-                    System.out.println(obj.getClass().getClassLoader());
-                    Method method = c.getDeclaredMethod("says", null);
-                    method.invoke(obj, null);//3
-                } catch (InstantiationException | IllegalAccessException
-                        | NoSuchMethodException
-                        | SecurityException |
-                        IllegalArgumentException |
-                        InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-    }
+//    private static void customClassloader() {
+//
+//
+//        DiskClassLoader diskClassLoader = new DiskClassLoader("D:\\com\\example");//1
+//        try {
+//            Class c = diskClassLoader.loadClass("com.example.Jobs");//2
+//            if (c != null) {
+//                try {
+//                    Object obj = c.newInstance();
+//                    System.out.println(obj.getClass().getClassLoader());
+//                    Method method = c.getDeclaredMethod("says", null);
+//                    method.invoke(obj, null);//3
+//                } catch (InstantiationException | IllegalAccessException
+//                        | NoSuchMethodException
+//                        | SecurityException |
+//                        IllegalArgumentException |
+//                        InvocationTargetException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
     private static void printClassLoaderFamilies() {
         ClassLoader loader = ClassLoaderTest.class.getClassLoader();
